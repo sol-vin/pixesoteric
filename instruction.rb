@@ -9,7 +9,11 @@ class Instruction
   attr_accessor :color_value
 
   def initialize cv
-    color_value = Color.new(cv)
+    @color_value = cv
+  end
+
+  def run(thread, cv)
+    self.class.run(thread, cv)
   end
 
 
@@ -29,7 +33,7 @@ class Instruction
     def get_color_value(pattern)
       PATTERN_SIZE.times do |y|
         PATTERN_SIZE.times do |x|
-          return pattern[x][y] unless pattern[x][y] == 0xffffff
+          return pattern[x][y] unless pattern[x][y] == Colors::WHITE
         end
       end
     end

@@ -19,8 +19,8 @@ class PThread
     @parent = parent
     @instructions = instructions
     @memory_wheel = MemoryWheel.new
-    @position.x = position_x
-    @position.y = position_y
+    @position_x = position_x
+    @position_y = position_y
     @direction = direction
     @stage_1 = 0
     @stage_2 = 0
@@ -46,6 +46,8 @@ class PThread
     end
 
     instruction = instructions.get_instruction(position_x, position_y)
+    puts "Running #{instruction.class} @ #{position_x}, #{position_y}"
+    puts "CV: #{instruction.color_value}"
     instruction.run(self, instruction.color_value)
     move 1
   end
@@ -75,13 +77,13 @@ class PThread
   def move amount
     case direction
       when :up
-        position_y -= amount
+        @position_y -= amount
       when :down
-        position_y += amount
+        @position_y += amount
       when :left
-        position_x -= amount
+        @position_x -= amount
       when :right
-        position_x += amount
+        @position_x += amount
       else
         throw ArgumentError.new
     end

@@ -12,7 +12,9 @@ class Instructions
       @instructions ||= []
       instructions.each do |i|
         if i.check_pattern(pattern)
-          return i.new(i.get_color_value(pattern))
+          cv = i.get_color_value(pattern)
+          puts "Got color_value: #{cv.r.to_s 16} from int #{i.class}"
+          return i.new(cv.to_i)
         end
       end
     end
@@ -82,6 +84,7 @@ class Instructions
     @array.each_with_index do |y_a, y|
       y_a.each_with_index do |int, x|
         if START_POINTS.include?(int.class.to_s.to_sym)
+          puts "#{int} @ x: #{x} y: #{y}"
           @start_points << point_struct.new(int, x, y)
         end
       end

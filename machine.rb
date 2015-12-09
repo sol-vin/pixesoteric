@@ -1,4 +1,5 @@
 require_relative './instruction'
+require_relative './p_thread'
 require_relative './instructions/basic/basic'
 
 require 'rmagick'
@@ -12,9 +13,20 @@ class Machine
 
   def initialize(image_file)
     @instructions = Instructions.new image_file
+
     @output = ""
     @to_merge = {}
     @threads = []
+
+    @instructions.start_points.each do |sp|
+      @threads << PThread.new(self, instructions, sp.x, sp.y, sp.p.class.direction)
+    end
+  end
+
+  def run
+    while threads.length > 0
+      run_one_instruction
+    end
   end
 
   def run_one_instruction
@@ -30,6 +42,9 @@ class Machine
         threads.insert(thread_index + 1, thread)
       end
     end
+
+    #prune old threads
+    @threads.select! { |t| !t.ended }
   end
 
   def fork_thread(thread, turn_direction)

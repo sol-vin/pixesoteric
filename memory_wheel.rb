@@ -16,8 +16,8 @@ class MemoryWheel
 
   def clone
     memory_wheel = MemoryWheel.new
-    memory_wheel.instance_variable_set("@memory", memory)
-    memory_wheel.instance_variable_set("@memory_position", memory_position)
+    memory_wheel.instance_variable_set("@memory", memory.clone)
+    memory_wheel.instance_variable_set("@memory_position", memory_position.clone)
   end
 
   def move_right

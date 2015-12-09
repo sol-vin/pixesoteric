@@ -18,7 +18,7 @@ class OutputMemChar < Instruction
         mem &= color_value.to_i
       end
       char = ((mem & 0xff0000) >> 16) + ((mem & 0xff00) >> 8) + (mem & 0xff)
-      thread.parent.write_ouput char.chr
+      thread.parent.write_output char.chr
     end
   end
 end
@@ -40,7 +40,7 @@ class OutputMemInt < Instruction
         mem &= color_value.to_i
       end
 
-      thread.parent.write_ouput mem.to_s
+      thread.parent.write_output mem.to_s
     end
   end
 end
@@ -62,7 +62,7 @@ class OutputMemHex < Instruction
         mem &= color_value.to_i
       end
 
-      thread.parent.write_ouput(mem.to_s(16))
+      thread.parent.write_output(mem.to_s(16))
     end
   end
 end
@@ -80,7 +80,8 @@ class OutputColorChar < Instruction
     def run(thread, color_value)
       mem = color_value.to_i
       char = ((mem & 0xff0000) >> 16) + ((mem & 0xff00) >> 8) + (mem & 0xff)
-      thread.parent.write_ouput char.chr
+      puts "Wrote #{char} to output from #{mem}"
+      thread.parent.write_output char.chr
     end
   end
 end
@@ -96,7 +97,7 @@ class OutputColorNumber < Instruction
     end
 
     def run(thread, color_value)
-      thread.parent.write_ouput(color_value.to_i)
+      thread.parent.write_output(color_value.to_i)
     end
   end
 end
@@ -113,7 +114,7 @@ class OutputColorHex < Instruction
     end
 
     def run(thread, color_value)
-      thread.parent.write_ouput(color_value.to_i.to_s(16))
+      thread.parent.write_output(color_value.to_i.to_s(16))
     end
   end
 end
