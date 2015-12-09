@@ -1,14 +1,14 @@
-require_relative '../instruction.rb'
-require_relative '../colors.rb'
+require_relative '../../instruction'
+require_relative '../../colors'
 
 
 class Stage1 < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -22,9 +22,9 @@ class Stage2 < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -38,9 +38,9 @@ class Stage1Color < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -54,9 +54,9 @@ class Stage2Color < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -70,9 +70,9 @@ class SwapMemStage < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -89,9 +89,9 @@ class SwapStages < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
       ]
     end
 
@@ -108,9 +108,9 @@ class ShiftPush < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 
@@ -125,9 +125,9 @@ class ShiftStageLeft < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -143,9 +143,9 @@ class ShiftStageRight < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
       ]
     end
 

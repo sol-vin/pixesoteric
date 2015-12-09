@@ -1,13 +1,13 @@
-require_relative '../instruction.rb'
-require_relative '../colors.rb'
+require_relative '../../instruction.rb'
+require_relative '../../colors.rb'
 
 class StartThreadRight < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 
@@ -26,9 +26,9 @@ class StartThreadLeft < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 
@@ -46,9 +46,9 @@ class StartThreadUp < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 
@@ -67,9 +67,9 @@ class StartThreadDown < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -87,9 +87,9 @@ class EndThread < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 
@@ -104,14 +104,14 @@ class PauseThread < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
     def run(thread, color_value)
-      thread.pause color_value.to_i
+      thread.pause color_value.to_i + 1
     end
   end
 end
@@ -120,9 +120,9 @@ class PipeURD < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -131,10 +131,10 @@ class PipeURD < Instruction
         when :up
           thread.parent.fork_thread(thread, :right)
         when :left
-          thread.turn_left
-          thread.parent.fork_thread(thread, :up)
+          thread.turn_right
+          thread.parent.fork_thread(thread, :left)
         when :down
-          thread.parent.fork_thread(thread, :right)
+          thread.parent.fork_thread(thread, :left)
         when :right
           thread.reverse
       end
@@ -146,23 +146,23 @@ class PipeLRD < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
     def run(thread, color_value)
       case (thread.direction)
         when :up
-          thread.turn_left
-          thread.parent.fork_thread(thread, :right)
+          thread.turn_right
+          thread.parent.fork_thread(thread, :left)
         when :left
-          thread.parent.fork_thread(thread, :down)
+          thread.parent.fork_thread(thread, :left)
         when :down
           thread.reverse
         when :right
-          thread.parent.fork_thread(thread, :down)
+          thread.parent.fork_thread(thread, :right)
       end
     end
   end
@@ -172,9 +172,9 @@ class PipeULD < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -185,10 +185,10 @@ class PipeULD < Instruction
         when :left
           thread.reverse
         when :down
-          thread.parent.fork_thread(thread, :left)
+          thread.parent.fork_thread(thread, :right)
         when :right
-          thread.turn_left
-          thread.parent.fork_thread(thread, :down)
+          thread.turn_right
+          thread.parent.fork_thread(thread, :left)
       end
     end
   end
@@ -198,9 +198,9 @@ class PipeULR < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
       ]
     end
 
@@ -209,12 +209,12 @@ class PipeULR < Instruction
         when :up
           thread.reverse
         when :left
-          thread.parent.fork_thread(thread, :up)
-        when :down
-          thread.turn_left
           thread.parent.fork_thread(thread, :right)
+        when :down
+          thread.turn_right
+          thread.parent.fork_thread(thread, :left)
         when :right
-          thread.parent.fork_thread(thread, :up)
+          thread.parent.fork_thread(thread, :left)
       end
     end
   end

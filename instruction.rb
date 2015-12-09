@@ -1,5 +1,5 @@
-require './instructions'
-require './colors'
+require_relative './instructions'
+require_relative './colors'
 
 class Instruction
 
@@ -14,27 +14,22 @@ class Instruction
 
 
   class << self
-    attr_reader :pattern
-
     def check_pattern(pattern2)
       PATTERN_SIZE.times do |y|
         PATTERN_SIZE.times do |x|
-          both_white = pattern[x, y] == Colors.WHITE &&
-              pattern2[x, y] == Colors.WHITE
-          both_not_white = pattern[x, y] != Colors.WHITE &&
-              pattern2[x, y] != Colors.WHITE
-          unless both_white || both_not_white
-            return false
-          end
+          both_white = (pattern[x][y] == Colors::WHITE && pattern2[x][y] == Colors::WHITE)
+          both_not_white = (pattern[x][y] != Colors::WHITE && pattern2[x][y] != Colors::WHITE)
+          return false unless both_white || both_not_white
         end
       end
       true
     end
 
+
     def get_color_value(pattern)
       PATTERN_SIZE.times do |y|
         PATTERN_SIZE.times do |x|
-          return pattern[x, y] unless pattern[x, y] == 0xffffff
+          return pattern[x][y] unless pattern[x][y] == 0xffffff
         end
       end
     end
@@ -43,8 +38,9 @@ class Instruction
       #dont do anything until someone gives us direction
     end
 
-    def inherited
-      Instructions.add_instruction(self.class)
+    def inherited i
+      #Add our class to the list of instructions
+      Instructions.add_instruction(i)
     end
   end
 end

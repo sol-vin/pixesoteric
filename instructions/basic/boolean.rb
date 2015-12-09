@@ -1,13 +1,13 @@
-require_relative '../instruction'
-require_relative '../colors'
+require_relative '../../instruction'
+require_relative '../../colors'
 
-class Not < Instruction
+class LogicalNot < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
       ]
     end
 
@@ -21,13 +21,13 @@ class Not < Instruction
   end
 end
 
-class And < Instruction
+class LogicalAnd < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -41,13 +41,13 @@ class And < Instruction
   end
 end
 
-class Or < Instruction
+class LogicalOr < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
       ]
     end
 
@@ -61,13 +61,13 @@ class Or < Instruction
   end
 end
 
-class Xor < Instruction
+class LogicalXor < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 

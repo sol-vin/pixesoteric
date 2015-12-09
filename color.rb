@@ -1,7 +1,7 @@
 class Color
   attr_accessor :value
 
-  def initialize value
+  def initialize value = 0
     @value = value
   end
 
@@ -35,5 +35,9 @@ class Color
 
   def to_s
     "0x" << to_i.to_s(16)
+  end
+
+  def == other
+    to_i == other.to_i
   end
 end

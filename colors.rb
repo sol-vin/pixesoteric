@@ -1,4 +1,4 @@
-require './color'
+require_relative './color'
 
 class Colors
   RED = Color.new(0xff0000)

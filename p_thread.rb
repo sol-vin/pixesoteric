@@ -1,4 +1,4 @@
-require './memory_wheel'
+require_relative './memory_wheel'
 
 class PThread
   #parent of the thread, should be a machine
@@ -30,6 +30,12 @@ class PThread
     @ended = false
   end
 
+  def clone
+    thread = PThreadnew(parent, instructions, position_x, position_y, direction)
+    thread.instance_variable_set("@memory_wheel", memory_wheel.clone)
+    thread
+  end
+
   def run_one_instruction
     if paused
       @paused_counter -= 1
@@ -39,7 +45,7 @@ class PThread
       return
     end
 
-    instruction = instructions[position_x, position_y]
+    instruction = instructions.get_instruction(position_x, position_y)
     instruction.run(self, instruction.color_value)
     move 1
   end

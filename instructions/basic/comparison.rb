@@ -1,13 +1,13 @@
-require_relative '../instruction.rb'
-require_relative '../colors.rb'
+require_relative '../../instruction'
+require_relative '../../colors'
 
 class GreaterThanZero < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
       ]
     end
 
@@ -25,9 +25,9 @@ class S1GreaterThanS2 < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
       ]
     end
 

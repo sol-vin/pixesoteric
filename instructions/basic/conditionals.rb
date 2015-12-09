@@ -1,12 +1,13 @@
-require_relative '../instruction.rb'
-require_relative '../colors.rb'
+require_relative '../../instruction.rb'
+require_relative '../../colors.rb'
+
 class VerticalIf < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -24,9 +25,9 @@ class HorizontalIf < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.WHITE, Colors.WHITE, Colors.WHITE],
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
 

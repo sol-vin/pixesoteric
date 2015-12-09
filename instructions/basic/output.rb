@@ -1,13 +1,13 @@
-require_relative '../instruction.rb'
-require_relative '../colors.rb'
+require_relative '../../instruction'
+require_relative '../../colors'
 
 class OutputMemChar < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
       ]
     end
 
@@ -27,9 +27,9 @@ class OutputMemInt < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
       ]
     end
 
@@ -49,9 +49,9 @@ class OutputMemHex < Instruction
   class << self
     def pattern
       [
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
       ]
     end
 
@@ -71,9 +71,9 @@ class OutputColorChar < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -89,9 +89,9 @@ class OutputColorNumber < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.WHITE, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
       ]
     end
 
@@ -106,9 +106,9 @@ class OutputColorHex < Instruction
   class << self
     def pattern
       [
-          [Colors.BLACK, Colors.BLACK, Colors.BLACK],
-          [Colors.BLACK, Colors.WHITE, Colors.BLACK],
-          [Colors.WHITE, Colors.BLACK, Colors.BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
       ]
     end
 
