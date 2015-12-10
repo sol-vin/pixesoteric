@@ -1,5 +1,7 @@
 class Instructions
   class << self
+    #list of instructions that exist within the machine
+    #uses this list to test if a read pattern in an instruction
     attr_reader :instructions
 
 
@@ -8,6 +10,8 @@ class Instructions
       @instructions << instruction
     end
 
+
+    #tests a pattern against all instructions until it finds a match
     def get_instruction(pattern)
       @instructions ||= []
       instructions.each do |i|
@@ -22,13 +26,16 @@ class Instructions
       raise ArgumentError, "pattern did not yield an instruction!"
     end
 
+    #find and run an instruction on a thread.
     def run_instruction(thread, pattern)
       instruction = get_instruction(pattern)
       instruction.run(thread, instruction.class.get_color_value(pattern))
     end
   end
 
+  #internal 2d array of read instructions
   attr_reader :array
+  #list of the thread entry points
   attr_reader :start_points
 
   START_POINTS = [:StartThreadDown, :StartThreadLeft, :StartThreadRight, :StartThreadUp]
@@ -58,7 +65,7 @@ class Instructions
     end
 
 
-    #fill pattern
+    #fill patterns
     instructions_x.times do |x|
       instructions_y.times do |y|
         pattern_size.times do |ox|
@@ -80,7 +87,7 @@ class Instructions
       y_a.map do |pattern|
         begin
           i = Instructions.get_instruction(pattern)
-        rescue ArgumentError
+        rescue ArgumentError #if the pattern was not found in the instructions
           puts("#{@colors.index(y_a)} ,#{y_a.index(pattern)} had a nil instruction. Shutting down!")
           quit
         end
@@ -88,6 +95,8 @@ class Instructions
       end
     end
 
+
+    #find start points and list them so the machine can start program
     @start_points = []
     point_struct = Struct.new(:p, :x, :y)
     @array.each_with_index do |y_a, y|
