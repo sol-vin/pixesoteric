@@ -1,4 +1,5 @@
 class Color
+  #actual int value of the color (0xffffff is white)
   attr_accessor :value
 
   def initialize value = 0
