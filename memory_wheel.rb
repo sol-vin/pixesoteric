@@ -1,9 +1,11 @@
 class MemoryWheel
-
+  #memory array for the wheel
   attr_reader :memory
+  #current position in memory
   attr_reader :memory_position
-
+  #min byte
   MIN = 0
+  #max byte
   MAX = 0xffffff
 
   def initialize
@@ -19,12 +21,14 @@ class MemoryWheel
     memory_wheel.instance_variable_set("@memory", memory.clone)
     memory_wheel.instance_variable_set("@memory_position", memory_position.clone)
   end
-
+ 
+  #moves the memory position to the right
   def move_right
     @memory_position += 1
     @memory << Color.new if @memory_position >= @memory.length
   end
-
+  
+  #moves the memory position to the left
   def move_left
     @memory_position -= 1
     if @memory_position < 0
@@ -33,10 +37,14 @@ class MemoryWheel
     end
   end
 
+  #returns the value at the current memory location
   def pull
     @memory[memory_position]
   end
-
+  
+  #pushes a value into the current memory location.
+  #Note: Rolls bytes over if too large / negative
+  # -1 = 0xffffff, 0x1000000 = 0x0
   def push x
     if x < 0
       x = (MAX - (x.abs % MAX) + 1)
