@@ -79,8 +79,8 @@ class SwapMemStage < Instruction
     def run(thread, color_value)
       s_1 = thread.stage_1
       mem = thread.memory_wheel.pull
-      thread.stage_1 = mem
-      thread.memory_wheel.push s_1
+      thread.stage_1 = mem.to_i
+      thread.memory_wheel.push s_1.to_i
     end
   end
 end

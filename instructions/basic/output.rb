@@ -29,7 +29,7 @@ class OutputMemInt < Instruction
       [
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
-          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
       ]
     end
 

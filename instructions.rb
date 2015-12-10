@@ -12,11 +12,14 @@ class Instructions
       @instructions ||= []
       instructions.each do |i|
         if i.check_pattern(pattern)
+          if i == Blank
+            return i.new(Color.new)
+          end
           cv = i.get_color_value(pattern)
-          puts "Got color_value: #{cv.r.to_s 16} from int #{i.class}"
           return i.new(cv.to_i)
         end
       end
+      raise ArgumentError, "pattern did not yield an instruction!"
     end
 
     def run_instruction(thread, pattern)
@@ -44,9 +47,9 @@ class Instructions
     instructions_y = image.rows/pattern_size
 
     #create array
-    @colors = Array.new(instructions_x)
+    @colors = Array.new(instructions_y)
     @colors.map! do |x_a|
-      Array.new(instructions_y).map do |y_a|
+      Array.new(instructions_x).map do |y_a|
         #each pattern
         Array.new(pattern_size).map do |x_p|
           Array.new(pattern_size)
@@ -65,7 +68,7 @@ class Instructions
             color.r = c.red/0x100
             color.g = c.green/0x100
             color.b = c.blue/0x100
-            @colors[x][y][oy][ox] = color.clone
+            @colors[y][x][oy][ox] = color.clone
           end
         end
       end
@@ -75,7 +78,13 @@ class Instructions
     #map to actual instructions
     @array = @colors.map do |y_a|
       y_a.map do |pattern|
-        Instructions.get_instruction(pattern)
+        begin
+          i = Instructions.get_instruction(pattern)
+        rescue ArgumentError
+          puts("#{@colors.index(y_a)} ,#{y_a.index(pattern)} had a nil instruction. Shutting down!")
+          quit
+        end
+        i
       end
     end
 
@@ -92,6 +101,6 @@ class Instructions
   end
 
   def get_instruction(x, y)
-    @array[x][y]
+    @array[y][x]
   end
 end

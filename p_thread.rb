@@ -46,6 +46,9 @@ class PThread
     end
 
     instruction = instructions.get_instruction(position_x, position_y)
+    if instruction.is_a? Array
+      puts
+    end
     puts "Running #{instruction.class} @ #{position_x}, #{position_y}"
     puts "CV: #{instruction.color_value}"
     instruction.run(self, instruction.color_value)
