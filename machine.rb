@@ -26,7 +26,7 @@ class Machine
     @threads = []
 
     @instructions.start_points.each do |sp|
-      @threads << PThread.new(self, instructions, sp.x, sp.y, sp.p.class.direction)
+      @threads << PThread.new(self, sp.x, sp.y, sp.p.class.direction)
     end
   end
 

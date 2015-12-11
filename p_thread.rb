@@ -4,8 +4,6 @@ class PThread
   #parent of the thread, should be a machine
   attr_reader :parent
   #2d array of instructions, is of type Instructions
-  attr_reader :instructions
-  #current instruction position
   attr_reader :position_x, :position_y
   #direction of travel
   attr_reader :direction
@@ -23,9 +21,8 @@ class PThread
 
   DIRECTIONS = [:up, :left, :down, :right]
 
-  def initialize(parent, instructions, position_x, position_y, direction)
+  def initialize(parent, position_x, position_y, direction)
     @parent = parent
-    @instructions = instructions
     @memory_wheel = MemoryWheel.new
     @position_x = position_x
     @position_y = position_y
@@ -39,7 +36,7 @@ class PThread
   end
 
   def clone
-    thread = PThread.new(parent, instructions, position_x, position_y, direction)
+    thread = PThread.new(parent, position_x, position_y, direction)
     thread.instance_variable_set("@memory_wheel", memory_wheel.clone)
     thread
   end
@@ -54,7 +51,7 @@ class PThread
       return if paused
     end
 
-    instruction = instructions.get_instruction(position_x, position_y)
+    instruction = parent.instructions.get_instruction(position_x, position_y)
     if instruction.is_a? Array
       puts "Nil instruction detected"
     end

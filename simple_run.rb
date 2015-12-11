@@ -2,7 +2,7 @@
 
 require './machine'
 
-machine = Machine.new('programs/simple_up_counter.bmp')
+machine = Machine.new('programs/a_to_z.bmp')
 machine.run
 puts
 puts
