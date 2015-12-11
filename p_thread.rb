@@ -55,9 +55,9 @@ class PThread
     if instruction.is_a? Array
       puts "Nil instruction detected"
     end
-    puts "Running #{instruction.class} @ #{position_x}, #{position_y}"
-    puts "CV: #{instruction.color_value}"
+    puts "Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value}"
     instruction.run(self, instruction.color_value)
+    puts "^  Thread state: mw:#{memory_wheel.to_s}, s_1:#{stage_1}, s_2:#{stage_2}"
     move 1
   end
   
@@ -119,4 +119,7 @@ class PThread
   def kill
     @ended = true
   end
+
+  alias :paused? :paused
+  alias :ended? :ended
 end

@@ -12,7 +12,7 @@ class VerticalIf < Instruction
     end
 
     def run(thread, color_value)
-      if thread.memory_wheel.pull.to_i <= color_value.to_i
+      if thread.memory_wheel.pull.to_i >= color_value.to_i
         thread.change_direction :down
       else
         thread.change_direction :up

@@ -54,4 +54,10 @@ class MemoryWheel
     #roll the memory over
     @memory[memory_position] = Color.new(x)
   end
+
+  def to_s
+    dump = memory.inject([]) { |a, i| a << i.to_s }
+    dump[memory_position] = "<(#{dump[memory_position]})>"
+    dump
+  end
 end

@@ -102,11 +102,13 @@ class Instructions
     @array.each_with_index do |y_a, y|
       y_a.each_with_index do |int, x|
         if START_POINTS.include?(int.class.to_s.to_sym)
-          puts "#{int} @ x: #{x} y: #{y}"
           @start_points << point_struct.new(int, x, y)
         end
       end
     end
+
+    #sort the array by priority
+    @start_points.sort! { |l, r| l.color_value.to_i <=> r.color_value.to_i }
   end
 
   def get_instruction(x, y)

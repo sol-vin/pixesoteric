@@ -18,7 +18,7 @@ class Machine
     @instructions = Instructions.new image_file
     reset #start the machine
   end
-  
+
   #reset the machine
   def reset
     @output = ""
@@ -74,5 +74,6 @@ class Machine
   #writes to the output
   def write_output string
     @output << string
+    puts "^  Output Changed: #@output"
   end
 end
