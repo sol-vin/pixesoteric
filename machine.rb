@@ -13,6 +13,8 @@ class Machine
   attr_reader :instructions
   #output of the machine
   attr_reader :output
+  #the number of completed cycles
+  attr_reader :cycles
 
   def initialize(image_file)
     @instructions = Instructions.new image_file
@@ -21,6 +23,7 @@ class Machine
 
   #reset the machine
   def reset
+    @cycles = 0
     @output = ""
     @to_merge = {}
     @threads = []
@@ -39,6 +42,7 @@ class Machine
  
   #runs a single instruction on all threads
   def run_one_instruction
+    return if threads.empty? and @to_merge.empty?
     threads.each do |thread|
       thread.run_one_instruction
     end
@@ -56,6 +60,7 @@ class Machine
 
     #prune old threads, delete the ones that no longer are active
     @threads.select! { |t| !t.ended }
+    @cycles += 1
   end
 
   #forks a thread in a specific direction

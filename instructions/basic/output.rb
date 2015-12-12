@@ -96,7 +96,7 @@ class OutputColorNumber < Instruction
     end
 
     def run(thread, color_value)
-      thread.parent.write_output(color_value.to_i)
+      thread.parent.write_output(color_value.to_i.to_s)
     end
   end
 end

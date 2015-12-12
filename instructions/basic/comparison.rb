@@ -12,7 +12,7 @@ class GreaterThanZero < Instruction
     end
 
     def run(thread, color_value)
-      if thread.memory_wheel.pull > 0
+      if thread.memory_wheel.pull.to_i > 0
         thread.memory_wheel.push 0
       else
         thread.memory_wheel.push 1
@@ -32,7 +32,7 @@ class S1GreaterThanS2 < Instruction
     end
 
     def run(thread, color_value)
-      if thread.memory_wheel.stage_1 > thread.memory_wheel.stage_1
+      if thread.memory_wheel.stage_1 > thread.memory_wheel.stage_2
         thread.memory_wheel.push 1
       else
         thread.memory_wheel.push 0

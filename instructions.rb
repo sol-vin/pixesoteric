@@ -108,7 +108,7 @@ class Instructions
     end
 
     #sort the array by priority
-    @start_points.sort! { |l, r| l.color_value.to_i <=> r.color_value.to_i }
+    @start_points.sort! { |l, r| l.p.color_value.to_i <=> r.p.color_value.to_i }
   end
 
   def get_instruction(x, y)

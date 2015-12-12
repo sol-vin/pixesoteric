@@ -1,9 +1,26 @@
 class Color
-  #actual int value of the color (0xffffff is white)
-  attr_accessor :value
+  #min byte
+  MIN = 0
+  #max byte
+  MAX = 0x1000000
 
-  def initialize value = 0
-    @value = value
+  #actual int value of the color (0xffffff is white)
+  attr_reader :value
+
+  def initialize v = 0
+    if v < 0
+      v = ((MAX-1) - (v.abs % MAX) + 1)
+    end
+    v = v % MAX
+    @value = v
+  end
+
+  def value= x
+    if x < 0
+      x = (MAX - (x.abs % MAX) + 1)
+    end
+    x = x % MAX
+    @value = x
   end
 
   def r
@@ -19,14 +36,17 @@ class Color
   end
 
   def r= v
+    v = v % 0x1000
     @value = (v << 16) + (g << 8) + b
   end
 
   def g= v
+    v = v % 0x1000
     @value = (r << 16) + (v << 8) + b
   end
 
   def b= v
+    v = v % 0x1000
     @value = (r << 16) + (g << 8) + v
   end
 
@@ -36,6 +56,10 @@ class Color
 
   def to_s
     "0x" << to_i.to_s(16)
+  end
+
+  def to_24_bit
+
   end
 
   def == other

@@ -3,10 +3,7 @@ class MemoryWheel
   attr_reader :memory
   #current position in memory
   attr_reader :memory_position
-  #min byte
-  MIN = 0
-  #max byte
-  MAX = 0xffffff
+
 
   def initialize
     @memory = []
@@ -46,12 +43,6 @@ class MemoryWheel
   #Note: Rolls bytes over if too large / negative
   # -1 = 0xffffff, 0x1000000 = 0x0
   def push x
-    if x < 0
-      x = (MAX - (x.abs % MAX) + 1)
-    end
-    x = x % MAX
-
-    #roll the memory over
     @memory[memory_position] = Color.new(x)
   end
 

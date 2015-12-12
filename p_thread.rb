@@ -122,4 +122,5 @@ class PThread
 
   alias :paused? :paused
   alias :ended? :ended
+  alias :killed? :ended
 end

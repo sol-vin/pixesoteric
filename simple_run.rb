@@ -7,3 +7,4 @@ machine = Machine.new('programs/fibonacci.bmp')
 puts
 puts
 puts machine.output
+puts "Total cycles: #{machine.cycles}"
