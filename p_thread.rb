@@ -53,11 +53,11 @@ class PThread
 
     instruction = parent.instructions.get_instruction(position_x, position_y)
     if instruction.is_a? Array
-      puts "Nil instruction detected"
+      parent.log.error "Nil instruction detected"
     end
-    puts "Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value}"
+    parent.log.debug "Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value}"
     instruction.run(self, instruction.color_value)
-    puts "^  Thread state: mw:#{memory_wheel.to_s}, s_1:#{stage_1}, s_2:#{stage_2}"
+    parent.log.debug "^  Thread state: mw:#{memory_wheel.to_s}, s_1:#{stage_1}, s_2:#{stage_2}"
     move 1
   end
   

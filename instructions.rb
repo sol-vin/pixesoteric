@@ -41,7 +41,7 @@ class Instructions
   START_POINTS = [:StartThreadDown, :StartThreadLeft, :StartThreadRight, :StartThreadUp]
 
   def initialize(image_file)
-    image = ImageList.new(image_file)
+    image = ImageList.new(File.absolute_path(image_file))
 
 
     #ensure the file contains only 3x3 instructions

@@ -3,6 +3,7 @@ require_relative './p_thread'
 require_relative './instructions/basic/basic'
 
 require 'rmagick'
+require 'logger'
 include Magick
 
 
@@ -16,7 +17,13 @@ class Machine
   #the number of completed cycles
   attr_reader :cycles
 
+  attr_reader :log
+  attr_reader :name
+  attr_reader :runs
+
   def initialize(image_file)
+    @name = image_file.split('/').last.split('.').first
+    @runs = 0
     @instructions = Instructions.new image_file
     reset #start the machine
   end
@@ -28,9 +35,14 @@ class Machine
     @to_merge = {}
     @threads = []
 
+    @log = Logger.new('log/' + name + runs.to_s + '.log', 10, 1024000)
+    log.debug "#{name} has reset! Runs: #{runs}"
+
     @instructions.start_points.each do |sp|
       @threads << PThread.new(self, sp.x, sp.y, sp.p.class.direction)
     end
+
+    @runs += 1
   end
 
   #runs until all threads are killed
@@ -79,6 +91,6 @@ class Machine
   #writes to the output
   def write_output string
     @output << string
-    puts "^  Output Changed: #@output"
+    log.debug "^  Output Changed: #@output"
   end
 end
