@@ -18,8 +18,10 @@ class PThread
   attr_reader :paused_counter
   #has the thread ended?
   attr_reader :ended
+  #the identity of the thread, given by the parent machine
+  attr_reader :id
 
-  DIRECTIONS = [:up, :left, :down, :right]
+  DIRECTIONS = [:up, :right, :down, :left]
 
   def initialize(parent, position_x, position_y, direction)
     @parent = parent
@@ -33,10 +35,14 @@ class PThread
     @paused = false
     @paused_counter = 0
     @ended = false
+    @id = parent.get_id
   end
 
   def clone
     thread = PThread.new(parent, position_x, position_y, direction)
+    if memory_wheel == 0
+      puts
+    end
     thread.instance_variable_set("@memory_wheel", memory_wheel.clone)
     thread
   end
@@ -45,19 +51,21 @@ class PThread
   def run_one_instruction
     if paused
       @paused_counter -= 1
+      parent.log.debug "^  Thread #{id} is paused for #{@paused_counter} cycles"
       if @paused_counter <= 0
+        parent.log.debug "^  Thread #{id} is unpaused"
         unpause
       end
-      return if paused
+      return
     end
 
     instruction = parent.instructions.get_instruction(position_x, position_y)
     if instruction.is_a? Array
-      parent.log.error "Nil instruction detected"
+      parent.log.error "Unknown instruction detected"
     end
-    parent.log.debug "Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value}"
+    parent.log.debug "T#{id} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s}"
     instruction.run(self, instruction.color_value)
-    parent.log.debug "^  Thread state: mw:#{memory_wheel.to_s}, s_1:#{stage_1}, s_2:#{stage_2}"
+    parent.log.debug "^  Thread state: mw:#{memory_wheel.to_s}, s_1:#{stage_1}, s_2:#{stage_2}, d:#{direction}"
     move 1
   end
   
@@ -68,15 +76,15 @@ class PThread
   end
   
   #turns the thread left
-  def turn_left
-    index = DIRECTIONS.index direction + 1
+  def turn_right
+    index = DIRECTIONS.index(direction) + 1
     index = 0 if index >= DIRECTIONS.length
     change_direction(DIRECTIONS[index])
   end
 
   #turns the thread right
-  def turn_right
-    index = DIRECTIONS.index direction - 1
+  def turn_left
+    index = DIRECTIONS.index(direction) - 1
     index = DIRECTIONS.length-1 if index < 0
     change_direction(DIRECTIONS[index])
   end
@@ -111,7 +119,7 @@ class PThread
 
   #unpause the thread
   def unpause
-    @pause = false
+    @paused = false
     @paused_counter = 0
   end
 

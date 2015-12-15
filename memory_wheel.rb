@@ -16,7 +16,8 @@ class MemoryWheel
   def clone
     memory_wheel = MemoryWheel.new
     memory_wheel.instance_variable_set("@memory", memory.clone)
-    memory_wheel.instance_variable_set("@memory_position", memory_position.clone)
+    memory_wheel.instance_variable_set("@memory_position", memory_position)
+    memory_wheel
   end
  
   #moves the memory position to the right
@@ -49,6 +50,6 @@ class MemoryWheel
   def to_s
     dump = memory.inject([]) { |a, i| a << i.to_s }
     dump[memory_position] = "<(#{dump[memory_position]})>"
-    dump
+    dump.join(" ")
   end
 end

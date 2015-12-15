@@ -17,7 +17,7 @@ class Instructions
       instructions.each do |i|
         if i.check_pattern(pattern)
           if i == Blank
-            return i.new(Color.new)
+            return i.new(0xffffff)
           end
           cv = i.get_color_value(pattern)
           return i.new(cv.to_i)

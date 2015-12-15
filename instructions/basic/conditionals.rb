@@ -32,10 +32,10 @@ class HorizontalIf < Instruction
     end
 
     def run(thread, color_value)
-      if thread.memory_wheel.pull.to_i <= color_value.to_i
-        thread.change_direction :right
-      else
+      if thread.memory_wheel.pull.to_i >= color_value.to_i
         thread.change_direction :left
+      else
+        thread.change_direction :right
       end
     end
   end

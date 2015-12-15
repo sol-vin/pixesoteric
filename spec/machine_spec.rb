@@ -9,4 +9,9 @@ describe 'Machine Tests' do
     expect(a_to_z.output).to eq ('A'..'Z').to_a.join
   end
 
+  it 'should run factorial' do
+    factorial = Machine.new('programs/factorial.bmp')
+    factorial.run
+    expect(factorial.output).to eq '3628800'
+  end
 end

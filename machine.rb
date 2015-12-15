@@ -32,10 +32,11 @@ class Machine
   def reset
     @cycles = 0
     @output = ""
-    @to_merge = {}
+    @to_merge = []
     @threads = []
+    @id = 0
 
-    @log = Logger.new('log/' + name + runs.to_s + '.log', 10, 1024000)
+    @log = Logger.new('log/' + name + '.log', 10, 1024000)
     log.debug "#{name} has reset! Runs: #{runs}"
 
     @instructions.start_points.each do |sp|
@@ -61,14 +62,21 @@ class Machine
     #merge threads
     #threads end up in @to_merge from fork_thread and are added
     #after instructions are ran
-    @to_merge.each do |thread, turn_direction|
-      thread_index = threads.index(thread)
-      if turn_direction == :left
-        threads.insert(thread_index, thread)
-      elsif turn_direction == :right
-        threads.insert(thread_index + 1, thread)
+    @to_merge.each do |hash|
+      thread_index = -1
+
+      threads.each_with_index do |thread, index|
+        if thread.id == hash[:thread].id
+          thread_index = index
+        end
+      end
+      if hash[:direction] == :left
+        threads.insert(thread_index, hash[:new_thread])
+      elsif hash[:direction] == :right
+        threads.insert(thread_index + 1, hash[:new_thread])
       end
     end
+    @to_merge.clear
 
     #prune old threads, delete the ones that no longer are active
     @threads.select! { |t| !t.ended }
@@ -84,13 +92,21 @@ class Machine
     elsif turn_direction == :right
       new_thread.turn_right
     end
+    new_thread.move 1
 
-    @to_merge[new_thread] = turn_direction
+    @to_merge << {thread: thread, new_thread: new_thread, direction: turn_direction}
+    log.debug "^  Thread forked! Id: #{new_thread.id}"
   end
 
   #writes to the output
   def write_output string
     @output << string
     log.debug "^  Output Changed: #@output"
+  end
+
+  def get_id
+    new_id = @id
+    @id += 1
+    new_id
   end
 end
