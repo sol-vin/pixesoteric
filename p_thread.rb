@@ -60,12 +60,13 @@ class PThread
     end
 
     instruction = parent.instructions.get_instruction(position_x, position_y)
-    if instruction.is_a? Array
-      parent.log.error "Unknown instruction detected"
-    end
     parent.log.debug "T#{id} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s}"
     instruction.run(self, instruction.color_value)
-    parent.log.debug "^  Thread state: mw:#{memory_wheel.to_s}, s_1:#{stage_1}, s_2:#{stage_2}, d:#{direction}"
+    parent.log.debug "^  Thread state:"
+    parent.log.debug "^     mw:#{memory_wheel.to_s}"
+    parent.log.debug "^     s_1:#{stage_1}"
+    parent.log.debug "^     s_2:#{stage_2}"
+    parent.log.debug "^     d:#{direction}"
     move 1
   end
   

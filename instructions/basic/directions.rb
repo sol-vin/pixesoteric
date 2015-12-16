@@ -75,7 +75,7 @@ class Jump < Instruction
     end
 
     def run(thread, color_value)
-      thread.move color_value.to_i
+      thread.move color_value.to_i + 1
     end
   end
 end

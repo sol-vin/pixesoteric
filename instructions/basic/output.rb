@@ -79,7 +79,7 @@ class OutputColorChar < Instruction
 
     def run(thread, color_value)
       mem = color_value.to_i
-      char = ((mem & 0xff0000) >> 16) + ((mem & 0xff00) >> 8) + (mem & 0xff)
+      char = (((mem & 0xff0000) >> 16) + ((mem & 0xff00) >> 8) + (mem & 0xff)) % 0x100
       thread.parent.write_output char.chr
     end
   end
