@@ -1,7 +1,7 @@
 require_relative '../../instruction'
 require_relative '../../colors'
 
-class GreaterThanZero < Instruction
+class GreaterThanCV < Instruction
   class << self
     def pattern
       [
@@ -12,7 +12,7 @@ class GreaterThanZero < Instruction
     end
 
     def run(thread, color_value)
-      if thread.memory_wheel.pull.to_i > 0
+      if thread.memory_wheel.pull.to_i > color_value.to_i
         thread.memory_wheel.push 0
       else
         thread.memory_wheel.push 1

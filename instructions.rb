@@ -26,6 +26,10 @@ class Instructions
       raise ArgumentError, "pattern did not yield an instruction!"
     end
 
+    def clear
+      @instructions = []
+    end
+
     #find and run an instruction on a thread.
     def run_instruction(thread, pattern)
       instruction = get_instruction(pattern)
