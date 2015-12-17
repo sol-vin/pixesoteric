@@ -165,6 +165,46 @@ class ShiftStageRight < Instruction
   end
 end
 
+class Stage1Push < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+      ]
+    end
+
+    def run(thread, color_value)
+      mem = thread.stage_1.to_i
+      if color_value.to_i != 0x000000
+        mem &= color_value.to_i
+      end
+      thread.memory_wheel.push mem
+    end
+  end
+end
+
+class Stage2Push < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+      ]
+    end
+
+    def run(thread, color_value)
+      mem = thread.stage_2.to_i
+      if color_value.to_i != 0x000000
+        mem &= color_value.to_i
+      end
+      thread.memory_wheel.push mem
+    end
+  end
+end
+
 
 
 

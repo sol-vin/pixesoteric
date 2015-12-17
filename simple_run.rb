@@ -2,8 +2,8 @@
 
 require './machine'
 
-machine = Machine.new('programs/project_euler_1.bmp')
-22000.times { machine.run_one_instruction }
+machine = Machine.new('programs/static_increment.bmp')
+20000.times { machine.run_one_instruction }
 puts
 puts
 puts machine.output

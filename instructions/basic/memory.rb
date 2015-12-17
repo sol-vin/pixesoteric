@@ -81,6 +81,22 @@ class Insert < Instruction
   end
 end
 
+class MovePosition < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+      ]
+    end
+
+    def run(thread, color_value)
+      thread.memory_wheel.jump color_value
+    end
+  end
+end
+
 class InsertPosition < Instruction
   class << self
     def pattern

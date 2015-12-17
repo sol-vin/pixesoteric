@@ -53,9 +53,9 @@ class Division < Instruction
   class << self
     def pattern
       [
-          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::WHITE],
       ]
     end
 

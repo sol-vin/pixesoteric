@@ -60,7 +60,7 @@ class PThread
     end
 
     instruction = parent.instructions.get_instruction(position_x, position_y)
-    parent.log.info "T#{id} C:#{parent.cycles} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s}"
+    parent.log.info "T#{id} C:#{parent.cycles} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s 16}"
     instruction.run(self, instruction.color_value)
     parent.log.debug "^  Thread state:"
     parent.log.debug "^     mw:#{memory_wheel.to_s}"

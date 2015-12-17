@@ -1,3 +1,5 @@
+require './color'
+
 class MemoryWheel
   #memory array for the wheel
   attr_reader :memory
@@ -6,7 +8,7 @@ class MemoryWheel
 
 
   def initialize
-    @memory = []
+    @memory = {}
     @memory_position = 0
 
     #set the first memory space
@@ -23,7 +25,6 @@ class MemoryWheel
   #moves the memory position to the right
   def move_right
     @memory_position += 1
-    @memory << Color.new if @memory_position >= @memory.length
   end
   
   #moves the memory position to the left
@@ -31,13 +32,12 @@ class MemoryWheel
     @memory_position -= 1
     if @memory_position < 0
       @memory_position = 0
-      @memory.unshift Color.new
     end
   end
 
   #returns the value at the current memory location
   def pull
-    @memory[memory_position]
+    @memory[memory_position] || Color.new(0)
   end
   
   #pushes a value into the current memory location.
@@ -47,9 +47,20 @@ class MemoryWheel
     @memory[memory_position] = Color.new(x.to_i)
   end
 
+  def jump x
+    @memory_position = x
+  end
+
   def to_s
-    dump = memory.inject([]) { |a, i| a << i.to_s }
-    dump[memory_position] = "<(#{dump[memory_position]})>"
+    dump = memory.inject([]) do |a, p|
+      if p.first == memory_position
+        a << "<{#{p.first.to_s 16}=#{p.last}}>"
+      else
+        a << "#{p.first.to_s 16}=#{p.last}"
+
+      end
+    end
+
     dump.join(" ")
   end
 end

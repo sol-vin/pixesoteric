@@ -32,7 +32,7 @@ class S1GreaterThanS2 < Instruction
     end
 
     def run(thread, color_value)
-      if thread.memory_wheel.stage_1 > thread.memory_wheel.stage_2
+      if thread.stage_1.to_i > thread.stage_2.to_i
         thread.memory_wheel.push 1
       else
         thread.memory_wheel.push 0
