@@ -42,6 +42,7 @@ class Instruction
           return pattern[x][y] unless pattern[x][y] == Colors::WHITE
         end
       end
+      Colors::WHITE
     end
     
     #runs the instruction on a thread

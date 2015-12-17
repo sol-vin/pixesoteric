@@ -13,7 +13,11 @@ class Stage1 < Instruction
     end
 
     def run(thread, color_value)
-      thread.stage_1 = thread.memory_wheel.pull
+      mem = thread.memory_wheel.pull.to_i
+      if color_value.to_i != 0x000000
+        mem &= color_value.to_i
+      end
+      thread.stage_1 = Color.new(mem)
     end
   end
 end
@@ -29,7 +33,11 @@ class Stage2 < Instruction
     end
 
     def run(thread, color_value)
-      thread.stage_2 = thread.memory_wheel.pull
+      mem = thread.memory_wheel.pull.to_i
+      if color_value.to_i != 0x000000
+        mem &= color_value.to_i
+      end
+      thread.stage_2 = Color.new(mem)
     end
   end
 end
@@ -134,7 +142,7 @@ class ShiftStageLeft < Instruction
     def run(thread, color_value)
       thread.stage_2 = thread.stage_1
       thread.stage_1 = thread.memory_wheel.pull
-      thread.memory_wheel.move_left
+      (color_value+1).times { thread.memory_wheel.move_left }
     end
   end
 end
@@ -152,7 +160,7 @@ class ShiftStageRight < Instruction
     def run(thread, color_value)
       thread.stage_2 = thread.stage_1
       thread.stage_1 = thread.memory_wheel.pull
-      thread.memory_wheel.move_right
+      (color_value+1).times { thread.memory_wheel.move_right }
     end
   end
 end

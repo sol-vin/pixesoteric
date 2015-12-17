@@ -63,19 +63,3 @@ class DirectionRight < Instruction
     end
   end
 end
-
-class Jump < Instruction
-  class << self
-    def pattern
-      [
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-      ]
-    end
-
-    def run(thread, color_value)
-      thread.move color_value.to_i + 1
-    end
-  end
-end

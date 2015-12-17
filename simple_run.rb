@@ -2,7 +2,7 @@
 
 require './machine'
 
-machine = Machine.new('programs/project_euler_2.bmp')
+machine = Machine.new('programs/project_euler_1.bmp')
 22000.times { machine.run_one_instruction }
 puts
 puts

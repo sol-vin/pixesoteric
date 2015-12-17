@@ -219,3 +219,37 @@ class PipeULR < Instruction
     end
   end
 end
+
+class Jump < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+      ]
+    end
+
+    def run(thread, color_value)
+      thread.move color_value.to_i + 1
+    end
+  end
+end
+
+class Call < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+      ]
+    end
+
+    def run(thread, color_value)
+      x = ((color_value & 0xfff000) >> 12) - 0x7ff
+      y = (color_value & 0xfff) - 0x7ff
+      thread.jump(x, y)
+    end
+  end
+end

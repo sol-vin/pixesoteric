@@ -58,10 +58,6 @@ class Color
     "0x" << to_i.to_s(16)
   end
 
-  def to_24_bit
-
-  end
-
   def == other
     to_i == other.to_i
   end

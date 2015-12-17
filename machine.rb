@@ -16,10 +16,14 @@ class Machine
   attr_reader :output
   #the number of completed cycles
   attr_reader :cycles
-
+  #logger log
   attr_reader :log
+  #name of the machine, is the file indentifier of the image
   attr_reader :name
+  #how many times has this machine been run
   attr_reader :runs
+  #static memory for threads
+  attr_reader :memory
 
   def initialize(image_file)
     @name = image_file.split('/').last.split('.').first
@@ -35,9 +39,11 @@ class Machine
     @to_merge = []
     @threads = []
     @id = 0
+    @memory = {}
+    @memory.default = Color.new(0)
 
-    @log = Logger.new('log/' + name + '.log', 10, 1024000)
-    log.debug "#{name} has reset! Runs: #{runs}"
+    @log = Logger.new(File.new('log/' + name + '.log', "w"))
+    log.info "#{name} has reset! Runs: #{runs}"
 
     @instructions.start_points.each do |sp|
       @threads << PThread.new(self, sp.x, sp.y, sp.p.class.direction)

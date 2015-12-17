@@ -44,7 +44,7 @@ class MemoryWheel
   #Note: Rolls bytes over if too large / negative
   # -1 = 0xffffff, 0x1000000 = 0x0
   def push x
-    @memory[memory_position] = Color.new(x)
+    @memory[memory_position] = Color.new(x.to_i)
   end
 
   def to_s

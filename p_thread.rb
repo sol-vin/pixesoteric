@@ -51,22 +51,25 @@ class PThread
   def run_one_instruction
     if paused
       @paused_counter -= 1
-      parent.log.debug "^  Thread #{id} is paused for #{@paused_counter} cycles"
+      parent.log.debug "^  T#{id} C:#{parent.cycles} is paused for #{@paused_counter} cycles"
       if @paused_counter <= 0
-        parent.log.debug "^  Thread #{id} is unpaused"
+        parent.log.debug "^  T#{id} is unpaused"
         unpause
       end
       return
     end
 
     instruction = parent.instructions.get_instruction(position_x, position_y)
-    parent.log.debug "T#{id} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s}"
+    parent.log.info "T#{id} C:#{parent.cycles} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s}"
     instruction.run(self, instruction.color_value)
     parent.log.debug "^  Thread state:"
     parent.log.debug "^     mw:#{memory_wheel.to_s}"
     parent.log.debug "^     s_1:#{stage_1}"
     parent.log.debug "^     s_2:#{stage_2}"
     parent.log.debug "^     d:#{direction}"
+    parent.log.debug "^  Machine state:"
+    parent.log.debug "^     static: #{parent.memory}"
+
     move 1
   end
   
@@ -110,6 +113,11 @@ class PThread
       else
         throw ArgumentError.new
     end
+  end
+
+  def jump(x, y)
+    @position_x += x
+    @position_y += y
   end
 
   #pauses the thread for a certain amount of cycles

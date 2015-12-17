@@ -13,7 +13,6 @@ class Instructions
 
     #tests a pattern against all instructions until it finds a match
     def get_instruction(pattern)
-      @instructions ||= []
       instructions.each do |i|
         if i.check_pattern(pattern)
           if i == Blank
