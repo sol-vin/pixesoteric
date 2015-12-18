@@ -1,0 +1,7 @@
+# pixesoteric
+A 2D esoteric programming language.
+
+Hello, and welcome to the Pixesoteric readme file.
+Pixesoteric aims to be a 2D esoteric programming language which can be used to make fun, simple programs using any image editor which supports 24-bit bitmaps. Each instruction is a 3x3 block of pixels, and is read and executed by a PThread. A Machine reads the instructions, and interprets them into code, when the program starts, it finds all potential code entry points in the program and makes a new PThread for each entry point. Then, as the Machine calls run_one_instruction, the PThreads will move along, executing the program. You can find a list of instructions [here](https://docs.google.com/spreadsheets/d/1etsoKthuqpWZ1hWZaGKK74r_1t6qVouZEnMy1vQWbuk/edit?usp=sharing). Each Machine had static memory which can be read and modified by all threads, although beware, just like in real programming languages, static memory comes with the side effect of not knowing its state when using it. Each PThread has it's own memory, a wheel type structure. PThreads can be forked, cloning the thread and it's members. PThreads do not share a memory wheel, only Machine's memory is shared. Debug logs can be found in the log directory, these can help you diagnose problems with your program, or potential bugs with the interpreter. Please submit any bugs found to the Issues page on GitHub.
+
+If you'd like to know more about the project, or any questions, feel free to contact me via the email on my GitHub page. 
