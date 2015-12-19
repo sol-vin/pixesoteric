@@ -116,7 +116,7 @@ class PauseThread < Instruction
   end
 end
 
-class PipeURD < Instruction
+class ForkPipeURD < Instruction
   class << self
     def pattern
       [
@@ -131,8 +131,8 @@ class PipeURD < Instruction
         when :up
           thread.parent.fork_thread(thread, :right)
         when :left
-          thread.turn_right
           thread.parent.fork_thread(thread, :left)
+          thread.turn_right
         when :down
           thread.parent.fork_thread(thread, :left)
         when :right
@@ -142,7 +142,7 @@ class PipeURD < Instruction
   end
 end
 
-class PipeLRD < Instruction
+class ForkPipeLRD < Instruction
   class << self
     def pattern
       [
@@ -155,8 +155,8 @@ class PipeLRD < Instruction
     def run(thread, color_value)
       case (thread.direction)
         when :up
-          thread.turn_right
           thread.parent.fork_thread(thread, :left)
+          thread.turn_right
         when :left
           thread.parent.fork_thread(thread, :left)
         when :down
@@ -168,7 +168,7 @@ class PipeLRD < Instruction
   end
 end
 
-class PipeULD < Instruction
+class ForkPipeULD < Instruction
   class << self
     def pattern
       [
@@ -187,14 +187,14 @@ class PipeULD < Instruction
         when :down
           thread.parent.fork_thread(thread, :right)
         when :right
-          thread.turn_right
           thread.parent.fork_thread(thread, :left)
+          thread.turn_right
       end
     end
   end
 end
 
-class PipeULR < Instruction
+class ForkPipeULR < Instruction
   class << self
     def pattern
       [
@@ -211,8 +211,8 @@ class PipeULR < Instruction
         when :left
           thread.parent.fork_thread(thread, :right)
         when :down
-          thread.turn_right
           thread.parent.fork_thread(thread, :left)
+          thread.turn_right
         when :right
           thread.parent.fork_thread(thread, :left)
       end

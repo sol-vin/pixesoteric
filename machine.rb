@@ -42,7 +42,7 @@ class Machine
     @memory = {}
     @memory.default = Color.new(0)
 
-    @log = Logger.new(File.new('log/' + name + '.log', "w"))
+    @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', "w"))
     log.info "#{name} has reset! Runs: #{runs}"
 
     @instructions.start_points.each do |sp|

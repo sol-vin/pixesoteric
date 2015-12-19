@@ -2,7 +2,7 @@
 
 require './machine'
 
-machine = Machine.new('programs/static_increment.bmp')
+machine = Machine.new('programs/thread_priority.bmp')
 20000.times { machine.run_one_instruction }
 puts
 puts

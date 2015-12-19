@@ -1,4 +1,4 @@
-require './color'
+require_relative './color'
 
 class MemoryWheel
   #memory array for the wheel
