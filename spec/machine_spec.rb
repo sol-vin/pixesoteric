@@ -30,7 +30,7 @@ describe 'Machine Tests' do
   it 'should run factors' do
     factors = Machine.new('programs/factors.bmp')
     factors.run
-    expect(factors.output).to eq "2 4 5 8 10 20 25 40 50 100 125 200 250 500 "
+    expect(factors.output).to eq "2 4 5 8 10 20 25 40 50 100 125 200 250 500 " #need to elimate this end space in the program
   end
 
   it 'should run fibonacci' do
@@ -49,6 +49,12 @@ describe 'Machine Tests' do
     project_euler_2 = Machine.new('programs/project_euler_2.bmp')
     project_euler_2.run
     expect(project_euler_2.output).to eq "4613732"
+  end
+
+  it 'should run project_euler_3' do
+    project_euler_3 = Machine.new('programs/project_euler_3.bmp')
+    project_euler_3.run
+    expect(project_euler_3.output).to eq "29"
   end
 
   it 'should run pipe_test_1' do
@@ -73,6 +79,18 @@ describe 'Machine Tests' do
     thread_priority = Machine.new('programs/thread_priority.bmp')
     thread_priority.run
     expect(thread_priority.output).to eq "012345678"
+  end
+
+  it 'should run insert_static_test' do
+    insert_static_test = Machine.new('programs/insert_static_test.bmp')
+    insert_static_test.run
+    expect(insert_static_test.output).to eq "65280"
+  end
+
+  it 'should run is_prime' do
+    insert_static_test = Machine.new('programs/is_prime.bmp')
+    insert_static_test.run
+    expect(insert_static_test.output).to eq "7297 PRIME"
   end
 end
 

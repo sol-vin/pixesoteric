@@ -107,7 +107,6 @@ class Machine
   #writes to the output
   def write_output string
     @output << string
-    log.debug "^  Output Changed: #@output"
   end
 
   def get_id

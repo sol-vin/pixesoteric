@@ -30,7 +30,6 @@ image.pixbuf = pixbuf
 #put the image into the viewer box
 viewer_box.pack_start(image, expand: true, fill: true, padding: 0)
 
-
 #stats box controls
 cycles_label = Gtk::Label.new("Cycles: 0")
 
@@ -38,13 +37,21 @@ stats_box.pack_start(cycles_label, expand: false, fill: false, padding: 0)
 
 #tool bar buttons
 previous_step_button = Gtk::Button.new(label: "<-")
+previous_step_button.opacity = 0.5
 zoom_in_button = Gtk::Button.new(label: "Z+")
+previous_step_button.opacity = 0.5
 zoom_out_button = Gtk::Button.new(label: "Z-")
+previous_step_button.opacity = 0.5
 inspect_machine_button = Gtk::Button.new(label: "IM")
+previous_step_button.opacity = 0.5
 inspect_thread_button = Gtk::Button.new(label: "IT")
+previous_step_button.opacity = 0.5
 run_machine_button = Gtk::Button.new(label: "Run")
+previous_step_button.opacity = 0.5
 pause_machine_button = Gtk::Button.new(label: "Pause")
+previous_step_button.opacity = 0.5
 restart_machine_button = Gtk::Button.new(label: "Restart")
+previous_step_button.opacity = 0.5
 next_step_button = Gtk::Button.new(label: "->")
 
 #put them into the toolbar
@@ -68,9 +75,23 @@ window_box.pack_start(viewer_box, expand: true, fill: false, padding: 20)
 window_box.pack_start(stats_box, expand: true, fill: false, padding: 20)
 window_box.pack_start(toolbar_box, expand: true, fill: true, padding: 0)
 
+
+#create and start the machine
+machine = Machine.new('../programs/project_euler_2.bmp')
+
+#attach events to machine methods
+next_step_button.signal_connect(:clicked) do
+  machine.run_one_instruction
+  cycles_label.text = "C:#{machine.cycles}"
+end
+
+#create and start the window
 window = Gtk::Window.new
 window.title = "Pixesoteric Viewer"
 window.set_size_request 400, 300
+window.border_width = 10
+window.add(window_box)
+window.show_all
 
 window.signal_connect(:delete_event) {
   puts "delete event occurred"
@@ -82,9 +103,4 @@ window.signal_connect(:destroy) {
   puts "destroy event occurred"
   Gtk.main_quit
 }
-
-window.border_width = 10
-window.add(window_box)
-window.show_all
-
 Gtk.main

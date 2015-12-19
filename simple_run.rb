@@ -2,8 +2,10 @@
 
 require './machine'
 
-machine = Machine.new('programs/thread_priority.bmp')
-20000.times { machine.run_one_instruction }
+machine = Machine.new('programs/is_prime.bmp')
+#1000000.times { machine.run_one_instruction }
+
+machine.run
 puts
 puts
 puts machine.output

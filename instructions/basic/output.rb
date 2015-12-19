@@ -118,4 +118,38 @@ class OutputColorHex < Instruction
   end
 end
 
+class InputAndOutputNumber < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+      ]
+    end
+
+    def run(thread, color_value)
+      thread.parent.write_output(color_value.to_i.to_s)
+      thread.memory_wheel.push color_value.to_i
+    end
+  end
+end
+
+class InputAndOutputChar < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+      ]
+    end
+
+    def run(thread, color_value)
+      thread.parent.write_output(color_value.to_i.to_s)
+      thread.memory_wheel.push color_value.to_i
+    end
+  end
+end
+
 

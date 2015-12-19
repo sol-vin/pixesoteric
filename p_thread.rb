@@ -69,8 +69,10 @@ class PThread
     parent.log.debug "^     d:#{direction}"
     parent.log.debug "^  Machine state:"
     parent.log.debug "^     static: #{parent.memory}"
+    parent.log.debug "^     output: #{parent.output}"
 
-    move 1
+    #move unless we called here recently.
+    move 1 unless instruction.class == Call
   end
   
   #change the direction
