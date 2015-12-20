@@ -54,9 +54,9 @@ class MemoryWheel
   def to_s
     dump = memory.inject([]) do |a, p|
       if p.first == memory_position
-        a << "<{#{p.first.to_s 16}=#{p.last}}>"
+        a << "<{#{p.first.to_i}=#{p.last}}>"
       else
-        a << "#{p.first.to_s 16}=#{p.last}"
+        a << "#{p.first.to_i}=#{p.last}"
 
       end
     end

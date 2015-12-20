@@ -21,6 +21,7 @@ class PThread
   #the identity of the thread, given by the parent machine
   attr_reader :id
 
+  #clockwise list of instructions
   DIRECTIONS = [:up, :right, :down, :left]
 
   def initialize(parent, position_x, position_y, direction)

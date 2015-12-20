@@ -69,7 +69,7 @@ describe 'Machine Tests' do
     pipe_test_1.run
     expect(pipe_test_1.output).to eq "1234"
   end
-  6
+
   it 'should run pipe_test_2' do
     pipe_test_2 = Machine.new('programs/pipe_test_2.bmp')
     pipe_test_2.run
@@ -92,6 +92,30 @@ describe 'Machine Tests' do
     insert_static_test = Machine.new('programs/insert_static_test.bmp')
     insert_static_test.run
     expect(insert_static_test.output).to eq "65280"
+  end
+
+  it 'should run is_palindrome 101' do
+    is_palindrome = Machine.new('programs/is_palindrome.bmp', "101")
+    is_palindrome.run
+    expect(is_palindrome.output).to eq "TRUE"
+  end
+
+  it 'should run is_palindrome 1234321' do
+    is_palindrome = Machine.new('programs/is_palindrome.bmp', "1234321")
+    is_palindrome.run
+    expect(is_palindrome.output).to eq "TRUE"
+  end
+
+  it 'should run is_palindrome 1234' do
+    is_palindrome = Machine.new('programs/is_palindrome.bmp', "1234")
+    is_palindrome.run
+    expect(is_palindrome.output).to eq "FALSE"
+  end
+
+  it 'should run is_palindrome 113456' do
+    is_palindrome = Machine.new('programs/is_palindrome.bmp', "113456")
+    is_palindrome.run
+    expect(is_palindrome.output).to eq "FALSE"
   end
 
   #hard tests

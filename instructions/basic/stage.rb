@@ -116,8 +116,8 @@ class ShiftPush < Instruction
   class << self
     def pattern
       [
-          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
       ]
     end
