@@ -70,6 +70,7 @@ class PThread
     parent.log.debug "^  Machine state:"
     parent.log.debug "^     static: #{parent.memory}"
     parent.log.debug "^     output: #{parent.output}"
+    parent.log.debug "^     input: #{parent.input}"
 
     #move unless we called here recently.
     move 1 unless instruction.class == Call

@@ -24,8 +24,11 @@ class Machine
   attr_reader :runs
   #static memory for threads
   attr_reader :memory
+  #input
+  attr_reader :input
 
-  def initialize(image_file)
+  def initialize(image_file, input="")
+    @original_input = input
     @name = image_file.split('/').last.split('.').first
     @runs = 0
     @instructions = Instructions.new image_file
@@ -41,6 +44,7 @@ class Machine
     @id = 0
     @memory = {}
     @memory.default = Color.new(0)
+    @input = @original_input
 
     @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', "w"))
     log.info "#{name} has reset! Runs: #{runs}"
@@ -107,6 +111,18 @@ class Machine
   #writes to the output
   def write_output string
     @output << string
+  end
+
+  def get_input_number
+    string = ""
+    while input.length != 0 && ("0".."9").include?(input[0])
+      string << @input.slice!(0)
+    end
+    string.to_i
+  end
+
+  def get_input_char
+    @input.slice!(0).ord unless machine.input.length == 0
   end
 
   def get_id
