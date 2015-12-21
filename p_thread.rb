@@ -26,17 +26,23 @@ class PThread
 
   def initialize(parent, position_x, position_y, direction)
     @parent = parent
-    @memory_wheel = MemoryWheel.new
     @position_x = position_x
     @position_y = position_y
     @direction = direction
-    @stage_1 = 0
-    @stage_2 = 0
+
 
     @paused = false
     @paused_counter = 0
     @ended = false
     @id = parent.get_id
+
+    reset
+  end
+
+  def reset
+    @memory_wheel = MemoryWheel.new
+    @stage_1 = 0
+    @stage_2 = 0
   end
 
   def clone

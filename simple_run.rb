@@ -2,8 +2,8 @@
 
 require './machine'
 
-machine = Machine.new('programs/is_palindrome.bmp', "984489")
-10000.times { machine.run_one_instruction }
+machine = Machine.new('programs/factorial.bmp', "10")
+200_000.times { machine.run_one_instruction }
 
 #machine.run
 puts

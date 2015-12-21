@@ -118,30 +118,36 @@ describe 'Machine Tests' do
     expect(is_palindrome.output).to eq "FALSE"
   end
 
+  it 'should run is_prime 7298' do
+    insert_static_test = Machine.new('programs/is_prime.bmp', '7298')
+    insert_static_test.run
+    expect(insert_static_test.output).to eq "7298 NOT PRIME"
+  end
+
+  it 'should run is_prime 9999' do
+    insert_static_test = Machine.new('programs/is_prime.bmp', '9999')
+    insert_static_test.run
+    expect(insert_static_test.output).to eq "9999 NOT PRIME"
+  end
+
   #hard tests
   it 'should run factors 500' do
     factors = Machine.new('programs/factors.bmp', '500')
     factors.run
-    expect(factors.output).to eq "2 4 5 10 20 25 50 100 125 250 " #need to elimate this end space in the program
+    expect(factors.output).to eq "2 4 5 10 20 25 50 100 125 250"
   end
 
 
   it 'should run factors 1000' do
     factors = Machine.new('programs/factors.bmp', '1000')
     factors.run
-    expect(factors.output).to eq "2 4 5 8 10 20 25 40 50 100 125 200 250 500 " #need to elimate this end space in the program
+    expect(factors.output).to eq "2 4 5 8 10 20 25 40 50 100 125 200 250 500"
   end
 
   it 'should run factors 2700' do
     factors = Machine.new('programs/factors.bmp', '2700')
     factors.run
-    expect(factors.output).to eq "2 3 4 5 6 9 10 12 15 18 20 25 27 30 36 45 50 54 60 75 90 100 108 135 150 180 225 270 300 450 540 675 900 1350 " #need to elimate this end space in the program
-  end
-
-  it 'should run is_prime 7298' do
-    insert_static_test = Machine.new('programs/is_prime.bmp', '7298')
-    insert_static_test.run
-    expect(insert_static_test.output).to eq "7298 NOT PRIME"
+    expect(factors.output).to eq "2 3 4 5 6 9 10 12 15 18 20 25 27 30 36 45 50 54 60 75 90 100 108 135 150 180 225 270 300 450 540 675 900 1350"
   end
 
   it 'should run is_prime 7297' do
@@ -173,6 +179,12 @@ describe 'Machine Tests' do
     project_euler_3 = Machine.new('programs/project_euler_3.bmp', '13195')
     project_euler_3.run
     expect(project_euler_3.output).to eq "29"
+  end
+
+  it 'should run project_euler_4 99' do
+    project_euler_4 = Machine.new('programs/project_euler_4.bmp', '99')
+    project_euler_4.run
+    expect(project_euler_4.output).to eq "9009"
   end
 end
 

@@ -253,3 +253,19 @@ class Call < Instruction
     end
   end
 end
+
+class Refresh < Instruction
+  class << self
+    def pattern
+      [
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          [Colors::BLACK, Colors::WHITE, Colors::BLACK],
+      ]
+    end
+
+    def run(thread, color_value)
+      thread.reset
+    end
+  end
+end

@@ -25,13 +25,16 @@ class MemoryWheel
   #moves the memory position to the right
   def move_right
     @memory_position += 1
+    if @memory_position > 0xfffffe
+      @memory_position = 0
+    end
   end
   
   #moves the memory position to the left
   def move_left
     @memory_position -= 1
     if @memory_position < 0
-      @memory_position = 0
+      @memory_position = 0xfffffe
     end
   end
 
@@ -54,9 +57,9 @@ class MemoryWheel
   def to_s
     dump = memory.inject([]) do |a, p|
       if p.first == memory_position
-        a << "<{#{p.first.to_i}=#{p.last}}>"
+        a << "<{#{p.first.to_i.to_s 16}=#{p.last.to_i.to_s}}>"
       else
-        a << "#{p.first.to_i}=#{p.last}"
+        a << "#{p.first.to_i.to_s 16}=#{p.last.to_i.to_s}"
 
       end
     end
