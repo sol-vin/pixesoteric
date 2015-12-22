@@ -1,6 +1,7 @@
 require_relative '../../instruction'
 require_relative '../../colors'
 
+#Outputs the CMWL as a char using r + g + b
 class OutputMemChar < Instruction
   class << self
     def pattern
@@ -23,6 +24,7 @@ class OutputMemChar < Instruction
   end
 end
 
+#Outputs the CMWL as a number. CV masks the value.
 class OutputMemInt < Instruction
   class << self
     def pattern
@@ -45,6 +47,7 @@ class OutputMemInt < Instruction
   end
 end
 
+# Ouputs the CMWL as hex. CV masks the value.
 class OutputMemHex < Instruction
   class << self
     def pattern
@@ -67,6 +70,7 @@ class OutputMemHex < Instruction
   end
 end
 
+# Outputs CV as a char, using r + g + b
 class OutputColorChar < Instruction
   class << self
     def pattern
@@ -85,6 +89,7 @@ class OutputColorChar < Instruction
   end
 end
 
+# Output the CV as a number.
 class OutputColorNumber < Instruction
   class << self
     def pattern
@@ -101,7 +106,7 @@ class OutputColorNumber < Instruction
   end
 end
 
-
+# Output the CV as hex.
 class OutputColorHex < Instruction
   class << self
     def pattern
@@ -118,6 +123,7 @@ class OutputColorHex < Instruction
   end
 end
 
+# Pushes CV and outputs CV as a number
 class InputAndOutputNumber < Instruction
   class << self
     def pattern
@@ -135,6 +141,7 @@ class InputAndOutputNumber < Instruction
   end
 end
 
+# Pushes CV and outputs CV as a char using r + g + b.
 class InputAndOutputChar < Instruction
   class << self
     def pattern
@@ -151,5 +158,3 @@ class InputAndOutputChar < Instruction
     end
   end
 end
-
-

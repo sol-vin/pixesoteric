@@ -1,6 +1,7 @@
 require_relative '../../instruction'
 require_relative '../../colors'
 
+# Grabs a number from input until it hits a non-printable char or the end of input.
 class GetInputNumber < Instruction
   class << self
     def pattern
@@ -17,6 +18,7 @@ class GetInputNumber < Instruction
   end
 end
 
+# Gets a single char from input.
 class GetInputChar < Instruction
   class << self
     def pattern

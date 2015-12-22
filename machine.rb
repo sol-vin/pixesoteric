@@ -18,7 +18,7 @@ class Machine
   attr_reader :cycles
   #logger log
   attr_reader :log
-  #name of the machine, is the file indentifier of the image
+  #name of the machine, is the file identifier of the image
   attr_reader :name
   #how many times has this machine been run
   attr_reader :runs
@@ -27,7 +27,7 @@ class Machine
   #input
   attr_reader :input
 
-  def initialize(image_file, input="")
+  def initialize(image_file, input='')
     @original_input = input
     @name = image_file.split('/').last.split('.').first
     @runs = 0
@@ -38,7 +38,7 @@ class Machine
   #reset the machine
   def reset
     @cycles = 0
-    @output = ""
+    @output = ''
     @to_merge = []
     @threads = []
     @id = 0
@@ -46,8 +46,9 @@ class Machine
     @memory.default = Color.new(0)
     @input = @original_input
 
-    @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', "w"))
+    @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', 'w'))
     log.info "#{name} has reset! Runs: #{runs}"
+    log.level = Logger::WARN
 
     @instructions.start_points.each do |sp|
       @threads << PThread.new(self, sp.x, sp.y, sp.p.class.direction)
@@ -109,20 +110,20 @@ class Machine
   end
 
   #writes to the output
-  def write_output string
+  def write_output(string)
     @output << string
   end
 
   def get_input_number
-    string = ""
-    while input.length != 0 && ("0".."9").include?(input[0])
+    string = ''
+    while input.length != 0 && ('0'..'9').include?(input[0])
       string << @input.slice!(0)
     end
     string.to_i
   end
 
   def get_input_char
-    @input.slice!(0).ord unless machine.input.length == 0
+    @input.slice!(0).ord unless input.length == 0
   end
 
   def get_id

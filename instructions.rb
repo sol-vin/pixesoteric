@@ -22,7 +22,7 @@ class Instructions
           return i.new(cv.to_i)
         end
       end
-      raise ArgumentError, "pattern did not yield an instruction!"
+      raise ArgumentError, 'pattern did not yield an instruction!'
     end
 
     def clear
@@ -74,7 +74,7 @@ class Instructions
         pattern_size.times do |ox|
           pattern_size.times do |oy|
             c = image.pixel_color((x * pattern_size) + ox, (y * pattern_size) + oy)
-            color = Color.new()
+            color = Color.new
             color.r = c.red/0x100
             color.g = c.green/0x100
             color.b = c.blue/0x100
@@ -91,8 +91,7 @@ class Instructions
         begin
           i = Instructions.get_instruction(pattern)
         rescue ArgumentError #if the pattern was not found in the instructions
-          puts("#{@colors.index(y_a)} ,#{y_a.index(pattern)} had a nil instruction. Shutting down!")
-          quit
+          puts("#{y_a.index(pattern)}, #{@colors.index(y_a)} had a nil instruction. Shutting down!")
         end
         i
       end

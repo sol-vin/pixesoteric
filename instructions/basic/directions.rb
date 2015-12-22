@@ -1,5 +1,7 @@
 require_relative '../../instruction.rb'
 require_relative '../../colors.rb'
+
+# Changes the direction of the thread to up.
 class DirectionUp < Instruction
   class << self
     def pattern
@@ -16,6 +18,7 @@ class DirectionUp < Instruction
   end
 end
 
+# Changes the direction of the thread to down.
 class DirectionDown < Instruction
   class << self
     def pattern
@@ -32,6 +35,7 @@ class DirectionDown < Instruction
   end
 end
 
+# Changes the direction of the thread to left.
 class DirectionLeft < Instruction
   class << self
     def pattern
@@ -48,6 +52,7 @@ class DirectionLeft < Instruction
   end
 end
 
+# Changes the direction of the thread to right.
 class DirectionRight < Instruction
   class << self
     def pattern

@@ -1,5 +1,6 @@
 require_relative './color'
 
+# Some basic colors.
 class Colors
   RED = Color.new(0xff0000)
   YELLOW = Color.new(0xffff00)

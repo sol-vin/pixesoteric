@@ -1,18 +1,22 @@
 require_relative './instructions'
 require_relative './colors'
 
+# Base class for instructions to be read into by the interpreter.
 class Instruction
 
   #height and width of the pattern
   PATTERN_SIZE = 3
   #number of tiles in the pattern
   PATTERN_TILES = PATTERN_SIZE**2
+
+  LOGICAL_FALSE = 0
+  LOGICAL_TRUE = 1
   
   #color value of the instruction
   #color_value is used in a variety of commands to expand functionality
   attr_accessor :color_value
 
-  def initialize cv
+  def initialize(cv)
     @color_value = cv
   end
 
@@ -52,7 +56,7 @@ class Instruction
 
     #automatically place the instruction class into Instructions
     #so it can test read patterns against the instruction set easily.
-    def inherited i
+    def inherited(i)
       #Add our class to the list of instructions
       Instructions.add_instruction(i)
     end

@@ -1,3 +1,4 @@
+# Custom color class that will roll over 24-bit ints.
 class Color
   #min byte
   MIN = 0
@@ -7,7 +8,7 @@ class Color
   #actual int value of the color (0xffffff is white)
   attr_reader :value
 
-  def initialize v = 0
+  def initialize(v = 0)
     if v < 0
       v = ((MAX-1) - (v.abs % MAX) + 1)
     end
@@ -15,7 +16,7 @@ class Color
     @value = v
   end
 
-  def value= x
+  def value=(x)
     if x < 0
       x = (MAX - (x.abs % MAX) + 1)
     end
@@ -35,17 +36,17 @@ class Color
     (value & 0x0000ff)
   end
 
-  def r= v
+  def r=(v)
     v = v % 0x1000
     @value = (v << 16) + (g << 8) + b
   end
 
-  def g= v
+  def g=(v)
     v = v % 0x1000
     @value = (r << 16) + (v << 8) + b
   end
 
-  def b= v
+  def b=(v)
     v = v % 0x1000
     @value = (r << 16) + (g << 8) + v
   end
@@ -55,10 +56,10 @@ class Color
   end
 
   def to_s
-    "0x" << to_i.to_s(16)
+    '0x' << to_i.to_s(16)
   end
 
-  def == other
+  def ==(other)
     to_i == other.to_i
   end
 end

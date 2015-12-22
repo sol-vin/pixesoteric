@@ -1,6 +1,9 @@
 require_relative '../../instruction.rb'
 require_relative '../../colors.rb'
 
+# Changes the direction of the thread to up or down depending on CMWL.
+# Goes up if CMWL >= CV
+# Goes down if CMWL < CV
 class VerticalIf < Instruction
   class << self
     def pattern
@@ -21,6 +24,9 @@ class VerticalIf < Instruction
   end
 end
 
+# Changes the direction of the thread to left or right depending on CMWL.
+# Goes left if CMWL >= CV
+# Goes right if CMWL < CV
 class HorizontalIf < Instruction
   class << self
     def pattern

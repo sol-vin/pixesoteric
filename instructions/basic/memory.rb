@@ -1,6 +1,7 @@
 require_relative '../../instruction.rb'
 require_relative '../../colors.rb'
 
+# Moves the memory wheel to the right.
 class MemWheelRight < Instruction
   class << self
     def pattern
@@ -17,6 +18,7 @@ class MemWheelRight < Instruction
   end
 end
 
+# Moves the memory wheel to the left.
 class MemWheelLeft < Instruction
   class << self
     def pattern
@@ -33,6 +35,7 @@ class MemWheelLeft < Instruction
   end
 end
 
+# Decrements the CMWL by the CV + 1.
 class Decrement < Instruction
   class << self
     def pattern
@@ -49,6 +52,7 @@ class Decrement < Instruction
   end
 end
 
+# Increments the CMWL by the CV + 1.
 class Increment < Instruction
   class << self
     def pattern
@@ -65,6 +69,7 @@ class Increment < Instruction
   end
 end
 
+# Inserts the CV in the CMWL via push
 class Insert < Instruction
   class << self
     def pattern
@@ -81,6 +86,7 @@ class Insert < Instruction
   end
 end
 
+# Moves the color wheel to the location at CV.
 class MovePosition < Instruction
   class << self
     def pattern
@@ -97,6 +103,7 @@ class MovePosition < Instruction
   end
 end
 
+# Pulls CMWL and pushes it to a location CV.
 class InsertPosition < Instruction
   class << self
     def pattern
@@ -113,6 +120,7 @@ class InsertPosition < Instruction
   end
 end
 
+# Pulls the value at location CV and pushes it to CMWL
 class GetPosition < Instruction
   class << self
     def pattern
@@ -129,6 +137,7 @@ class GetPosition < Instruction
   end
 end
 
+# Push CMWL to static location CV.
 class InsertStatic < Instruction
   class << self
     def pattern
@@ -145,6 +154,7 @@ class InsertStatic < Instruction
   end
 end
 
+# Pull static location CV and push to CMWL
 class GetStatic < Instruction
   class << self
     def pattern
@@ -160,5 +170,3 @@ class GetStatic < Instruction
     end
   end
 end
-
-

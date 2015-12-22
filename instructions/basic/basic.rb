@@ -12,6 +12,7 @@ require_relative './thread_control'
 require_relative '../../instruction'
 require_relative '../../colors'
 
+# Blank instruction
 class Blank < Instruction
   class << self
     def pattern

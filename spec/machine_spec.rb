@@ -187,13 +187,12 @@ describe 'Machine Tests' do
     expect(project_euler_4.output).to eq "9009"
   end
 
-  #takes a really long time, a potential of billions of cycles.
-  #Sad part is it does get the right answer quickly, but it has to keep searching in case it finds one bigger.
-  # it 'should run project_euler_4 999' do
-  #   project_euler_4 = Machine.new('programs/project_euler_4.bmp', '999')
-  #   project_euler_4.run
-  #   expect(project_euler_4.output).to eq "906609"
-  # end
+  it 'should run project_euler_4 999' do
+    project_euler_4 = Machine.new('programs/project_euler_4.bmp', '999')
+    project_euler_4.log.level = Logger::WARN
+    project_euler_4.run
+    expect(project_euler_4.output).to eq "906609"
+  end
 
   it 'should run project_euler_5 10' do
     project_euler_5 = Machine.new('programs/project_euler_5.bmp', '10')

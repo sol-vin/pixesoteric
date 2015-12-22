@@ -1,7 +1,7 @@
 require_relative '../../instruction'
 require_relative '../../colors'
 
-
+# Pushes CMWL to stage_1.
 class Stage1 < Instruction
   class << self
     def pattern
@@ -22,6 +22,7 @@ class Stage1 < Instruction
   end
 end
 
+# Pushes CMWL to stage_2.
 class Stage2 < Instruction
   class << self
     def pattern
@@ -42,6 +43,7 @@ class Stage2 < Instruction
   end
 end
 
+# Pushes CV to stage_1.
 class Stage1Color < Instruction
   class << self
     def pattern
@@ -58,6 +60,7 @@ class Stage1Color < Instruction
   end
 end
 
+# Pushes CV to stage_2.
 class Stage2Color < Instruction
   class << self
     def pattern
@@ -74,6 +77,7 @@ class Stage2Color < Instruction
   end
 end
 
+# Swaps CMWL and stage_1.
 class SwapMemStage < Instruction
   class << self
     def pattern
@@ -93,6 +97,7 @@ class SwapMemStage < Instruction
   end
 end
 
+# Swaps stage_1 and stage_2
 class SwapStages < Instruction
   class << self
     def pattern
@@ -112,6 +117,7 @@ class SwapStages < Instruction
   end
 end
 
+# Pushes stage_1 to stage_2 amd pushes CMWL to stage_1
 class ShiftPush < Instruction
   class << self
     def pattern
@@ -128,7 +134,7 @@ class ShiftPush < Instruction
     end
   end
 end
-
+# Pushes stage_1 to stage_2 amd pushes CMWL to stage_1, then moves to the left CV times.
 class ShiftStageLeft < Instruction
   class << self
     def pattern
@@ -147,6 +153,7 @@ class ShiftStageLeft < Instruction
   end
 end
 
+# Pushes stage_1 to stage_2 amd pushes CMWL to stage_1, then moves to the right CV times.
 class ShiftStageRight < Instruction
   class << self
     def pattern
@@ -165,6 +172,7 @@ class ShiftStageRight < Instruction
   end
 end
 
+# Pushes stage_1 to CMWL masked by CV.
 class Stage1Push < Instruction
   class << self
     def pattern
@@ -185,6 +193,7 @@ class Stage1Push < Instruction
   end
 end
 
+# Pushes stage_2 to CMWL masked by CV.
 class Stage2Push < Instruction
   class << self
     def pattern

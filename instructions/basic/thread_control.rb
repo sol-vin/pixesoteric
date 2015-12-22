@@ -1,6 +1,7 @@
 require_relative '../../instruction.rb'
 require_relative '../../colors.rb'
 
+# Starts a thread heading right.
 class StartThreadRight < Instruction
   class << self
     def pattern
@@ -21,7 +22,7 @@ class StartThreadRight < Instruction
   end
 end
 
-
+# Starts a thread heading left.
 class StartThreadLeft < Instruction
   class << self
     def pattern
@@ -42,6 +43,7 @@ class StartThreadLeft < Instruction
   end
 end
 
+# Starts a thread heading up.
 class StartThreadUp < Instruction
   class << self
     def pattern
@@ -62,7 +64,7 @@ class StartThreadUp < Instruction
   end
 end
 
-
+# Starts a thread heading down.
 class StartThreadDown < Instruction
   class << self
     def pattern
@@ -83,6 +85,7 @@ class StartThreadDown < Instruction
   end
 end
 
+# Ends a thread.
 class EndThread < Instruction
   class << self
     def pattern
@@ -99,7 +102,7 @@ class EndThread < Instruction
   end
 end
 
-
+# Pauses a thread for CV cycles.
 class PauseThread < Instruction
   class << self
     def pattern
@@ -116,6 +119,8 @@ class PauseThread < Instruction
   end
 end
 
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
 class ForkPipeURD < Instruction
   class << self
     def pattern
@@ -137,11 +142,15 @@ class ForkPipeURD < Instruction
           thread.parent.fork_thread(thread, :left)
         when :right
           thread.reverse
+        else
+          raise Exception.new
       end
     end
   end
 end
 
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
 class ForkPipeLRD < Instruction
   class << self
     def pattern
@@ -163,11 +172,15 @@ class ForkPipeLRD < Instruction
           thread.reverse
         when :right
           thread.parent.fork_thread(thread, :right)
+        else
+          raise Exception.new
       end
     end
   end
 end
 
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
 class ForkPipeULD < Instruction
   class << self
     def pattern
@@ -189,11 +202,15 @@ class ForkPipeULD < Instruction
         when :right
           thread.parent.fork_thread(thread, :left)
           thread.turn_right
+        else
+          raise Exception.new
       end
     end
   end
 end
 
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
 class ForkPipeULR < Instruction
   class << self
     def pattern
@@ -215,11 +232,14 @@ class ForkPipeULR < Instruction
           thread.turn_right
         when :right
           thread.parent.fork_thread(thread, :left)
+        else
+          raise Exception.new
       end
     end
   end
 end
 
+# Jumps a thread a CV+1 instructions.
 class Jump < Instruction
   class << self
     def pattern
@@ -236,6 +256,8 @@ class Jump < Instruction
   end
 end
 
+# Moves the thread 0xXXXYYY spaces where x:0 y:0 = 0x7FF7FF
+# Examples: x: -1, y: 1 0x7FE800  x: 1, y: -1 0x8007FE
 class Call < Instruction
   class << self
     def pattern
@@ -254,6 +276,7 @@ class Call < Instruction
   end
 end
 
+# Clears the threads memory.
 class Refresh < Instruction
   class << self
     def pattern

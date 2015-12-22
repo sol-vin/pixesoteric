@@ -1,5 +1,6 @@
 require_relative './memory_wheel'
 
+# Single thread for an instruction reader and executor.
 class PThread
   #parent of the thread, should be a machine
   attr_reader :parent
@@ -50,7 +51,7 @@ class PThread
     if memory_wheel == 0
       puts
     end
-    thread.instance_variable_set("@memory_wheel", memory_wheel.clone)
+    thread.instance_variable_set('@memory_wheel', memory_wheel.clone)
     thread
   end
 
@@ -69,12 +70,12 @@ class PThread
     instruction = parent.instructions.get_instruction(position_x, position_y)
     parent.log.info "T#{id} C:#{parent.cycles} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s 16}"
     instruction.run(self, instruction.color_value)
-    parent.log.debug "^  Thread state:"
+    parent.log.debug '^  Thread state:'
     parent.log.debug "^     mw:#{memory_wheel.to_s}"
     parent.log.debug "^     s_1:#{stage_1}"
     parent.log.debug "^     s_2:#{stage_2}"
     parent.log.debug "^     d:#{direction}"
-    parent.log.debug "^  Machine state:"
+    parent.log.debug '^  Machine state:'
     parent.log.debug "^     static: #{parent.memory}"
     parent.log.debug "^     output: #{parent.output}"
     parent.log.debug "^     input: #{parent.input}"
@@ -110,7 +111,7 @@ class PThread
   end
 
   #moves the instruction cursor amount units in a direction
-  def move amount
+  def move(amount)
     case direction
       when :up
         @position_y -= amount
@@ -131,7 +132,7 @@ class PThread
   end
 
   #pauses the thread for a certain amount of cycles
-  def pause cycles
+  def pause(cycles)
     @paused = true
     @paused_counter = cycles
   end

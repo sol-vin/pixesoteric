@@ -1,6 +1,7 @@
 require_relative '../../instruction'
 require_relative '../../colors'
 
+# Adds stage_1 and stage_2 and pushes the result.
 class Addition < Instruction
   class << self
     def pattern
@@ -17,6 +18,7 @@ class Addition < Instruction
   end
 end
 
+# Subtracts stage_1 and stage_2 and pushes the result.
 class Subtraction < Instruction
   class << self
     def pattern
@@ -33,6 +35,7 @@ class Subtraction < Instruction
   end
 end
 
+# Multiplies stage_1 and stage_2 and pushes the result.
 class Multiplication < Instruction
   class << self
     def pattern
@@ -49,6 +52,7 @@ class Multiplication < Instruction
   end
 end
 
+# Divides stage_1 and stage_2 and pushes the result.
 class Division < Instruction
   class << self
     def pattern
@@ -65,6 +69,7 @@ class Division < Instruction
   end
 end
 
+# Modulos(is that even a verb?) stage_1 and stage_2 and pushes the result.
 class Modulo < Instruction
   class << self
     def pattern

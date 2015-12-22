@@ -1,5 +1,6 @@
 require_relative './color'
 
+# Wheel type memory structure used by PThread.
 class MemoryWheel
   #memory array for the wheel
   attr_reader :memory
@@ -17,8 +18,8 @@ class MemoryWheel
 
   def clone
     memory_wheel = MemoryWheel.new
-    memory_wheel.instance_variable_set("@memory", memory.clone)
-    memory_wheel.instance_variable_set("@memory_position", memory_position)
+    memory_wheel.instance_variable_set('@memory', memory.clone)
+    memory_wheel.instance_variable_set('@memory_position', memory_position)
     memory_wheel
   end
  
@@ -46,11 +47,11 @@ class MemoryWheel
   #pushes a value into the current memory location.
   #Note: Rolls bytes over if too large / negative
   # -1 = 0xffffff, 0x1000000 = 0x0
-  def push x
+  def push(x)
     @memory[memory_position] = Color.new(x.to_i)
   end
 
-  def jump x
+  def jump(x)
     @memory_position = x
   end
 
@@ -64,6 +65,6 @@ class MemoryWheel
       end
     end
 
-    dump.join(" ")
+    dump.join(' ')
   end
 end
