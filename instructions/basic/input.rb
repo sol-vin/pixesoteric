@@ -13,7 +13,7 @@ class GetInputNumber < Instruction
     end
 
     def run(thread, color_value)
-      thread.memory_wheel.push thread.parent.get_input_number
+      thread.memory_wheel.push thread.parent.grab_input_number
     end
   end
 end
@@ -30,7 +30,7 @@ class GetInputChar < Instruction
     end
 
     def run(thread, color_value)
-      thread.memory_wheel.push thread.parent.get_input_char
+      thread.memory_wheel.push thread.parent.grab_input_char
     end
   end
 end

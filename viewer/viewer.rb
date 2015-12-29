@@ -23,12 +23,11 @@ pixbuf = Gdk::Pixbuf.new("../programs/project_euler_2.bmp")
 #Scale up so we can see it
 pixbuf = pixbuf.scale(pixbuf.width * 8.0, pixbuf.height * 8.0, Gdk::Pixbuf::INTERP_TILES)
 
-##image widget to draw
-image = Gtk::Image.new(file: "../programs/project_euler_2.bmp")
-image.pixbuf = pixbuf
+drawing_area = Gtk::DrawingArea.new
+drawing_area.window.draw_pixbuf(nil, pixbuf, 0, 0, 0, 0, -1, -1, nil, 0, 0)
 
 #put the image into the viewer box
-viewer_box.pack_start(image, expand: true, fill: true, padding: 0)
+viewer_box.pack_start(drawing_area, expand: true, fill: true, padding: 0)
 
 #stats box controls
 cycles_label = Gtk::Label.new("Cycles: 0")

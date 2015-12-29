@@ -1,563 +1,140 @@
 Inspecting 22 files
-CCCCCWWWCWWWWCWCWWCCWC
+CC.CCCWCCWWWWCWCWWCCWC
 
 Offenses:
 
-instruction.rb:4:1: C: Missing top-level class documentation comment.
-class Instruction
-^^^^^
-instruction.rb:5:1: C: Extra empty line detected at class body beginning.
-instruction.rb:6:3: C: Missing space after #.
-  #height and width of the pattern
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:8:3: C: Missing space after #.
-  #number of tiles in the pattern
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:10:1: C: Trailing whitespace detected.
-instruction.rb:11:3: C: Missing space after #.
-  #color value of the instruction
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:12:3: C: Missing space after #.
-  #color_value is used in a variety of commands to expand functionality
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:15:18: C: Use def with parentheses when there are parameters.
-  def initialize cv
-                 ^^
-instruction.rb:19:3: C: Missing space after #.
-  #runs the instruction by calling the class level run
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:24:1: C: Extra blank line detected.
-instruction.rb:26:5: C: Missing space after #.
-    #check a pattern to this instruction to see if it matches
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:27:5: C: Assignment Branch Condition size for check_pattern is too high. [15.1/15]
+instruction.rb:13:1: C: Trailing whitespace detected.
+instruction.rb:29:5: C: Assignment Branch Condition size for check_pattern is too high. [15.1/15]
     def check_pattern(pattern2)
     ^^^
-instruction.rb:30:81: C: Line is too long. [90/80]
+instruction.rb:32:81: C: Line is too long. [90/80]
           both_white = (pattern[x][y] == Colors::WHITE && pattern2[x][y] == Colors::WHITE)
                                                                                 ^^^^^^^^^^
-instruction.rb:31:81: C: Line is too long. [94/80]
+instruction.rb:33:81: C: Line is too long. [94/80]
           both_not_white = (pattern[x][y] != Colors::WHITE && pattern2[x][y] != Colors::WHITE)
                                                                                 ^^^^^^^^^^^^^^
-instruction.rb:37:1: C: Trailing whitespace detected.
-instruction.rb:38:5: C: Missing space after #.
-    #gets the color_value of the instruction
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:47:1: C: Trailing whitespace detected.
-instruction.rb:48:5: C: Missing space after #.
-    #runs the instruction on a thread
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:50:7: C: Missing space after #.
-      #dont do anything until someone gives us direction
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:53:5: C: Missing space after #.
-    #automatically place the instruction class into Instructions
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:54:5: C: Missing space after #.
-    #so it can test read patterns against the instruction set easily.
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instruction.rb:55:19: C: Use def with parentheses when there are parameters.
-    def inherited i
-                  ^
-instruction.rb:56:7: C: Missing space after #.
-      #Add our class to the list of instructions
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-colors.rb:3:1: C: Missing top-level class documentation comment.
-class Colors
-^^^^^
-colors.rb:12:4: C: Final newline missing.
+instruction.rb:39:1: C: Trailing whitespace detected.
+instruction.rb:49:1: C: Trailing whitespace detected.
+colors.rb:13:4: C: Final newline missing.
 end
    
-color.rb:1:1: C: Missing top-level class documentation comment.
-class Color
-^^^^^
-color.rb:2:3: C: Missing space after #.
-  #min byte
-  ^^^^^^^^^
-color.rb:4:3: C: Missing space after #.
-  #max byte
-  ^^^^^^^^^
-color.rb:7:3: C: Missing space after #.
-  #actual int value of the color (0xffffff is white)
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-color.rb:10:18: C: Use def with parentheses when there are parameters.
-  def initialize v = 0
-                 ^^^^^
-color.rb:11:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-    if v < 0
-    ^^
-color.rb:12:16: C: Surrounding space missing for operator -.
-      v = ((MAX-1) - (v.abs % MAX) + 1)
-               ^
-color.rb:18:14: C: Use def with parentheses when there are parameters.
-  def value= x
-             ^
-color.rb:19:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-    if x < 0
-    ^^
-color.rb:38:10: C: Use def with parentheses when there are parameters.
-  def r= v
-         ^
-color.rb:43:10: C: Use def with parentheses when there are parameters.
-  def g= v
-         ^
-color.rb:48:10: C: Use def with parentheses when there are parameters.
-  def b= v
-         ^
-color.rb:58:5: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    "0x" << to_i.to_s(16)
-    ^^^^
-color.rb:61:10: C: Use def with parentheses when there are parameters.
-  def == other
-         ^^^^^
-machine.rb:9:1: C: Extra blank line detected.
-machine.rb:10:1: C: Missing top-level class documentation comment.
-class Machine
-^^^^^
-machine.rb:11:3: C: Missing space after #.
-  #contains the active running threads on the machine
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:13:3: C: Missing space after #.
-  #2d array of instructions
-  ^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:15:3: C: Missing space after #.
-  #output of the machine
-  ^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:17:3: C: Missing space after #.
-  #the number of completed cycles
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:19:3: C: Missing space after #.
-  #logger log
-  ^^^^^^^^^^^
-machine.rb:21:3: C: Missing space after #.
-  #name of the machine, is the file indentifier of the image
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:23:3: C: Missing space after #.
-  #how many times has this machine been run
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:25:3: C: Missing space after #.
-  #static memory for threads
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:27:3: C: Missing space after #.
-  #input
-  ^^^^^^
-machine.rb:30:35: C: Surrounding space missing in default value assignment.
-  def initialize(image_file, input="")
-                                  ^
-machine.rb:30:36: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-  def initialize(image_file, input="")
-                                   ^^
-machine.rb:35:11: C: Missing space after #.
-    reset #start the machine
-          ^^^^^^^^^^^^^^^^^^
-machine.rb:38:3: C: Missing space after #.
-  #reset the machine
-  ^^^^^^^^^^^^^^^^^^
 machine.rb:39:3: C: Assignment Branch Condition size for reset is too high. [25.06/15]
   def reset
   ^^^
 machine.rb:39:3: C: Method has too many lines. [15/10]
   def reset
   ^^^
-machine.rb:41:15: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    @output = ""
-              ^^
 machine.rb:49:81: C: Line is too long. [86/80]
-    @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', "w"))
+    @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', 'w'))
                                                                                 ^^^^^^
-machine.rb:49:82: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    @log = Logger.new(File.new(File.dirname(__FILE__) + '/log/' + name + '.log', "w"))
-                                                                                 ^^^
-machine.rb:60:3: C: Missing space after #.
-  #runs until all threads are killed
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:62:5: C: Favor modifier while usage when having a single-line body.
-    while threads.length > 0
-    ^^^^^
-machine.rb:66:1: C: Trailing whitespace detected.
-machine.rb:67:3: C: Missing space after #.
-  #runs a single instruction on all threads
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:68:3: C: Assignment Branch Condition size for run_one_instruction is too high. [28.72/15]
+machine.rb:65:3: C: Assignment Branch Condition size for run_one_instruction is too high. [27.46/15]
   def run_one_instruction
   ^^^
-machine.rb:68:3: C: Method has too many lines. [20/10]
+machine.rb:65:3: C: Method has too many lines. [13/10]
   def run_one_instruction
   ^^^
-machine.rb:69:30: C: Use && instead of and.
+machine.rb:67:30: C: Use && instead of and.
     return if threads.empty? and @to_merge.empty?
                              ^^^
-machine.rb:70:18: C: Pass &:run_one_instruction as an argument to each instead of a block.
-    threads.each do |thread|
-                 ^^^^^^^^^^^
-machine.rb:73:5: C: Missing space after #.
-    #merge threads
-    ^^^^^^^^^^^^^^
-machine.rb:74:5: C: Missing space after #.
-    #threads end up in @to_merge from fork_thread and are added
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:75:5: C: Missing space after #.
-    #after instructions are ran
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:80:9: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-        if thread.id == hash[:thread].id
-        ^^
-machine.rb:92:5: C: Missing space after #.
-    #prune old threads, delete the ones that no longer are active
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:97:3: C: Missing space after #.
-  #forks a thread in a specific direction
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-machine.rb:108:18: C: Space inside { missing.
-    @to_merge << {thread: thread, new_thread: new_thread, direction: turn_direction}
-                 ^
-machine.rb:108:81: C: Line is too long. [84/80]
-    @to_merge << {thread: thread, new_thread: new_thread, direction: turn_direction}
-                                                                                ^^^^
-machine.rb:108:84: C: Space inside } missing.
-    @to_merge << {thread: thread, new_thread: new_thread, direction: turn_direction}
-                                                                                   ^
-machine.rb:112:3: C: Missing space after #.
-  #writes to the output
-  ^^^^^^^^^^^^^^^^^^^^^
-machine.rb:113:20: C: Use def with parentheses when there are parameters.
-  def write_output string
-                   ^^^^^^
-machine.rb:117:7: C: Do not prefix reader method names with get_.
-  def get_input_number
-      ^^^^^^^^^^^^^^^^
-machine.rb:118:14: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    string = ""
-             ^^
-machine.rb:119:33: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    while input.length != 0 && ("0".."9").include?(input[0])
-                                ^^^
-machine.rb:119:38: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    while input.length != 0 && ("0".."9").include?(input[0])
-                                     ^^^
-machine.rb:125:7: C: Do not prefix reader method names with get_.
-  def get_input_char
-      ^^^^^^^^^^^^^^
-machine.rb:129:7: C: Do not prefix reader method names with get_.
-  def get_id
-      ^^^^^^
-simple_run.rb:7:55: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-machine = Machine.new('programs/project_euler_4.bmp', "999")
-                                                      ^^^^^
+machine.rb:74:81: C: Line is too long. [82/80]
+      thread_index = threads.find_index { |thread| thread.id == hash[:thread].id }
+                                                                                ^^
+machine.rb:100:81: C: Line is too long. [86/80]
+    @to_merge << { thread: thread, new_thread: new_thread, direction: turn_direction }
+                                                                                ^^^^^^
+machine.rb:112:56: C: Use && instead of and.
+    string << @input.slice!(0) while input.length != 0 and ('0'..'9').include?(input[0])
+                                                       ^^^
+machine.rb:112:81: C: Line is too long. [88/80]
+    string << @input.slice!(0) while input.length != 0 and ('0'..'9').include?(input[0])
+                                                                                ^^^^^^^^
 simple_run.rb:8:1: C: Missing space after #.
 #10_000.times { machine.run_one_instruction }
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 simple_run.rb:15:28: C: Final newline missing.
 puts "Total time: #{delta}"
                            
-instructions.rb:1:1: C: Missing top-level class documentation comment.
-class Instructions
-^^^^^
-instructions.rb:3:5: C: Missing space after #.
-    #list of instructions that exist within the machine
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:4:5: C: Missing space after #.
-    #uses this list to test if a read pattern in an instruction
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:7:1: C: Extra blank line detected.
-instructions.rb:13:1: C: Extra blank line detected.
-instructions.rb:14:5: C: Missing space after #.
-    #tests a pattern against all instructions until it finds a match
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:17:9: C: Use next to skip iteration.
-        if i.check_pattern(pattern)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:18:11: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-          if i == Blank
-          ^^
-instructions.rb:25:7: C: Use fail instead of raise to signal exceptions.
-      raise ArgumentError, "pattern did not yield an instruction!"
-      ^^^^^
-instructions.rb:25:28: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-      raise ArgumentError, "pattern did not yield an instruction!"
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:32:5: C: Missing space after #.
-    #find and run an instruction on a thread.
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:39:3: C: Missing space after #.
-  #internal 2d array of read instructions
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:41:3: C: Missing space after #.
-  #list of the thread entry points
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:44:81: C: Line is too long. [88/80]
+instructions.rb:25:81: C: Line is too long. [90/80]
+          return ((i == Blank) ? i.new(0xffffff) : i.new(i.get_color_value(pattern).to_i))
+                                                                                ^^^^^^^^^^
+instructions.rb:49:81: C: Line is too long. [88/80]
   START_POINTS = [:StartThreadDown, :StartThreadLeft, :StartThreadRight, :StartThreadUp]
                                                                                 ^^^^^^^^
-instructions.rb:46:3: C: Assignment Branch Condition size for initialize is too high. [65.86/15]
+instructions.rb:51:3: C: Assignment Branch Condition size for initialize is too high. [66.83/15]
   def initialize(image_file)
   ^^^
-instructions.rb:46:3: C: Method has too many lines. [47/10]
+instructions.rb:51:3: C: Method has too many lines. [50/10]
   def initialize(image_file)
   ^^^
-instructions.rb:49:1: C: Extra blank line detected.
-instructions.rb:50:5: C: Missing space after #.
-    #ensure the file contains only 3x3 instructions
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:51:81: C: Line is too long. [134/80]
-    throw ArgumentError.new unless (image.rows % Instruction::PATTERN_SIZE).zero? && (image.columns % Instruction::PATTERN_SIZE).zero?
-                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:55:5: C: Missing space after #.
-    #read through image_file and parse to a set of instructions
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:56:35: C: Surrounding space missing for operator /.
-    instructions_x = image.columns/pattern_size
-                                  ^
-instructions.rb:57:32: C: Surrounding space missing for operator /.
-    instructions_y = image.rows/pattern_size
-                               ^
-instructions.rb:59:5: C: Missing space after #.
-    #create array
-    ^^^^^^^^^^^^^
-instructions.rb:61:22: W: Unused block argument - x_a. You can omit the argument if you don't care about it.
-    @colors.map! do |x_a|
-                     ^^^
-instructions.rb:62:41: W: Unused block argument - y_a. You can omit the argument if you don't care about it.
-      Array.new(instructions_x).map do |y_a|
-                                        ^^^
-instructions.rb:63:9: C: Missing space after #.
-        #each pattern
-        ^^^^^^^^^^^^^
-instructions.rb:64:41: W: Unused block argument - x_p. You can omit the argument if you don't care about it.
-        Array.new(pattern_size).map do |x_p|
-                                        ^^^
-instructions.rb:70:1: C: Extra blank line detected.
-instructions.rb:71:5: C: Missing space after #.
-    #fill patterns
-    ^^^^^^^^^^^^^^
-instructions.rb:76:81: C: Line is too long. [83/80]
-            c = image.pixel_color((x * pattern_size) + ox, (y * pattern_size) + oy)
-                                                                                ^^^
-instructions.rb:77:30: C: Do not use parentheses for method calls with no arguments.
-            color = Color.new()
-                             ^
-instructions.rb:78:28: C: Surrounding space missing for operator /.
-            color.r = c.red/0x100
-                           ^
-instructions.rb:79:30: C: Surrounding space missing for operator /.
-            color.g = c.green/0x100
-                             ^
-instructions.rb:80:29: C: Surrounding space missing for operator /.
-            color.b = c.blue/0x100
-                            ^
-instructions.rb:87:1: C: Extra blank line detected.
-instructions.rb:88:5: C: Missing space after #.
-    #map to actual instructions
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:93:30: C: Missing space after #.
-        rescue ArgumentError #if the pattern was not found in the instructions
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:94:81: C: Line is too long. [100/80]
-          puts("#{@colors.index(y_a)} ,#{y_a.index(pattern)} had a nil instruction. Shutting down!")
+instructions.rb:54:1: C: Extra blank line detected.
+instructions.rb:56:81: C: Line is too long. [85/80]
+    throw ArgumentError.new unless (image.rows % Instruction::PATTERN_SIZE).zero? and
+                                                                                ^^^^^
+instructions.rb:56:83: C: Use && instead of and.
+    throw ArgumentError.new unless (image.rows % Instruction::PATTERN_SIZE).zero? and
+                                                                                  ^^^
+instructions.rb:57:81: C: Line is too long. [84/80]
+                                   (image.columns % Instruction::PATTERN_SIZE).zero?
+                                                                                ^^^^
+instructions.rb:76:1: C: Extra blank line detected.
+instructions.rb:94:1: C: Extra blank line detected.
+instructions.rb:100:81: C: Line is too long. [86/80]
+        rescue :pattern_parse_error # if the pattern was not found in the instructions
+                                                                                ^^^^^^
+instructions.rb:101:81: C: Line is too long. [100/80]
+          puts("#{y_a.index(pattern)}, #{@colors.index(y_a)} had a nil instruction. Shutting down!")
                                                                                 ^^^^^^^^^^^^^^^^^^^^
-instructions.rb:100:1: C: Extra blank line detected.
-instructions.rb:101:5: C: Missing space after #.
-    #find start points and list them so the machine can start program
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions.rb:112:5: C: Missing space after #.
-    #sort the array by priority
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:3:1: C: Class has too many lines. [109/100]
+instructions.rb:102:11: C: Use raise instead of fail to rethrow exceptions.
+          fail
+          ^^^^
+instructions.rb:108:1: C: Extra blank line detected.
+p_thread.rb:4:1: C: Class has too many lines. [106/100]
 class PThread
 ^^^^^
-p_thread.rb:3:1: C: Missing top-level class documentation comment.
-class PThread
-^^^^^
-p_thread.rb:4:3: C: Missing space after #.
-  #parent of the thread, should be a machine
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:6:3: C: Missing space after #.
-  #2d array of instructions, is of type Instructions
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:8:3: C: Missing space after #.
-  #direction of travel
-  ^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:10:3: C: Missing space after #.
-  #memory wheel
-  ^^^^^^^^^^^^^
-p_thread.rb:12:3: C: Missing space after #.
-  #stages for mathematical operations
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:14:1: C: Trailing whitespace detected.
-p_thread.rb:15:3: C: Missing space after #.
-  #is the thread paused?
-  ^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:17:3: C: Missing space after #.
-  #how many cycles should the thread pause for
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:19:3: C: Missing space after #.
-  #has the thread ended?
-  ^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:21:3: C: Missing space after #.
-  #the identity of the thread, given by the parent machine
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:24:3: C: Missing space after #.
-  #clockwise list of instructions
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:33:1: C: Extra blank line detected.
-p_thread.rb:50:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-    if memory_wheel == 0
-    ^^
-p_thread.rb:53:34: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    thread.instance_variable_set("@memory_wheel", memory_wheel.clone)
-                                 ^^^^^^^^^^^^^^^
-p_thread.rb:57:3: C: Missing space after #.
-  #runs a single instruction and moves
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:58:3: C: Assignment Branch Condition size for run_one_instruction is too high. [71.18/15]
+p_thread.rb:55:3: C: Assignment Branch Condition size for run_one_instruction is too high. [71.18/15]
   def run_one_instruction
   ^^^
-p_thread.rb:58:3: C: Method has too many lines. [22/10]
+p_thread.rb:55:3: C: Method has too many lines. [22/10]
   def run_one_instruction
   ^^^
-p_thread.rb:61:81: C: Line is too long. [93/80]
+p_thread.rb:58:81: C: Line is too long. [93/80]
       parent.log.debug "^  T#{id} C:#{parent.cycles} is paused for #{@paused_counter} cycles"
                                                                                 ^^^^^^^^^^^^^
-p_thread.rb:70:81: C: Line is too long. [146/80]
+p_thread.rb:67:81: C: Line is too long. [146/80]
     parent.log.info "T#{id} C:#{parent.cycles} Running #{instruction.class} @ #{position_x}, #{position_y} CV: #{instruction.color_value.to_s 16}"
                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:72:22: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    parent.log.debug "^  Thread state:"
-                     ^^^^^^^^^^^^^^^^^^
-p_thread.rb:73:47: W: Redundant use of Object#to_s in interpolation.
+p_thread.rb:70:47: W: Redundant use of Object#to_s in interpolation.
     parent.log.debug "^     mw:#{memory_wheel.to_s}"
                                               ^^^^
-p_thread.rb:77:22: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    parent.log.debug "^  Machine state:"
-                     ^^^^^^^^^^^^^^^^^^^
-p_thread.rb:82:5: C: Missing space after #.
+p_thread.rb:79:5: C: Missing space after #.
     #move unless we called here recently.
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:85:1: C: Trailing whitespace detected.
-p_thread.rb:86:3: C: Missing space after #.
-  #change the direction
-  ^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:91:1: C: Trailing whitespace detected.
-p_thread.rb:92:3: C: Missing space after #.
-  #turns the thread left
-  ^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:99:3: C: Missing space after #.
-  #turns the thread right
-  ^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:102:30: C: Surrounding space missing for operator -.
+p_thread.rb:82:1: C: Trailing whitespace detected.
+p_thread.rb:88:1: C: Trailing whitespace detected.
+p_thread.rb:99:30: C: Surrounding space missing for operator -.
     index = DIRECTIONS.length-1 if index < 0
                              ^
-p_thread.rb:106:3: C: Missing space after #.
-  #reverses the thread
-  ^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:112:3: C: Missing space after #.
-  #moves the instruction cursor amount units in a direction
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:113:3: C: Method has too many lines. [12/10]
-  def move amount
+p_thread.rb:110:3: C: Method has too many lines. [12/10]
+  def move(amount)
   ^^^
-p_thread.rb:113:12: C: Use def with parentheses when there are parameters.
-  def move amount
-           ^^^^^^
-p_thread.rb:115:7: C: Indent when as deep as case.
+p_thread.rb:112:7: C: Indent when as deep as case.
       when :up
       ^^^^
-p_thread.rb:117:7: C: Indent when as deep as case.
+p_thread.rb:114:7: C: Indent when as deep as case.
       when :down
       ^^^^
-p_thread.rb:119:7: C: Indent when as deep as case.
+p_thread.rb:116:7: C: Indent when as deep as case.
       when :left
       ^^^^
-p_thread.rb:121:7: C: Indent when as deep as case.
+p_thread.rb:118:7: C: Indent when as deep as case.
       when :right
       ^^^^
-p_thread.rb:133:3: C: Missing space after #.
-  #pauses the thread for a certain amount of cycles
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-p_thread.rb:134:13: C: Use def with parentheses when there are parameters.
-  def pause cycles
-            ^^^^^^
-p_thread.rb:139:3: C: Missing space after #.
-  #unpause the thread
-  ^^^^^^^^^^^^^^^^^^^
-p_thread.rb:145:3: C: Missing space after #.
-  #kill the thread
-  ^^^^^^^^^^^^^^^^
-p_thread.rb:150:3: C: Use alias_method instead of alias.
-  alias :paused? :paused
-  ^^^^^
-p_thread.rb:151:3: C: Use alias_method instead of alias.
-  alias :ended? :ended
-  ^^^^^
-p_thread.rb:152:3: C: Use alias_method instead of alias.
-  alias :killed? :ended
-  ^^^^^
-memory_wheel.rb:3:1: C: Missing top-level class documentation comment.
-class MemoryWheel
-^^^^^
-memory_wheel.rb:4:3: C: Missing space after #.
-  #memory array for the wheel
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:6:3: C: Missing space after #.
-  #current position in memory
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:9:1: C: Extra blank line detected.
-memory_wheel.rb:14:5: C: Missing space after #.
-    #set the first memory space
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:20:40: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    memory_wheel.instance_variable_set("@memory", memory.clone)
-                                       ^^^^^^^^^
-memory_wheel.rb:21:40: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    memory_wheel.instance_variable_set("@memory_position", memory_position)
-                                       ^^^^^^^^^^^^^^^^^^
 memory_wheel.rb:24:1: C: Trailing whitespace detected.
-memory_wheel.rb:25:3: C: Missing space after #.
-  #moves the memory position to the right
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:28:5: C: Use a guard clause instead of wrapping the code inside a conditional expression.
-    if @memory_position > 0xfffffe
-    ^^
-memory_wheel.rb:28:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-    if @memory_position > 0xfffffe
-    ^^
-memory_wheel.rb:32:1: C: Trailing whitespace detected.
-memory_wheel.rb:33:3: C: Missing space after #.
-  #moves the memory position to the left
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:36:5: C: Use a guard clause instead of wrapping the code inside a conditional expression.
-    if @memory_position < 0
-    ^^
-memory_wheel.rb:36:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-    if @memory_position < 0
-    ^^
-memory_wheel.rb:41:3: C: Missing space after #.
-  #returns the value at the current memory location
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:45:1: C: Trailing whitespace detected.
-memory_wheel.rb:46:3: C: Missing space after #.
-  #pushes a value into the current memory location.
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:47:3: C: Missing space after #.
-  #Note: Rolls bytes over if too large / negative
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-memory_wheel.rb:49:12: C: Use def with parentheses when there are parameters.
-  def push x
-           ^
-memory_wheel.rb:53:12: C: Use def with parentheses when there are parameters.
-  def jump x
-           ^
-memory_wheel.rb:57:3: C: Assignment Branch Condition size for to_s is too high. [20.05/15]
+memory_wheel.rb:30:1: C: Trailing whitespace detected.
+memory_wheel.rb:41:1: C: Trailing whitespace detected.
+memory_wheel.rb:54:3: C: Assignment Branch Condition size for to_s is too high. [16.06/15]
   def to_s
   ^^^
-memory_wheel.rb:60:55: W: Redundant use of Object#to_s in interpolation.
-        a << "<{#{p.first.to_i.to_s 16}=#{p.last.to_i.to_s}}>"
-                                                      ^^^^
-memory_wheel.rb:62:53: W: Redundant use of Object#to_s in interpolation.
-        a << "#{p.first.to_i.to_s 16}=#{p.last.to_i.to_s}"
-                                                    ^^^^
-memory_wheel.rb:67:15: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-    dump.join(" ")
-              ^^^
 viewer/viewer.rb:6:1: C: Missing space after #.
 #container for the whole window
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -585,237 +162,200 @@ viewer/viewer.rb:23:1: C: Missing space after #.
 viewer/viewer.rb:24:81: C: Line is too long. [89/80]
 pixbuf = pixbuf.scale(pixbuf.width * 8.0, pixbuf.height * 8.0, Gdk::Pixbuf::INTERP_TILES)
                                                                                 ^^^^^^^^^
-viewer/viewer.rb:26:1: C: Missing space after #.
-##image widget to draw
-^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:27:30: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-image = Gtk::Image.new(file: "../programs/project_euler_2.bmp")
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:30:1: C: Missing space after #.
+viewer/viewer.rb:29:1: C: Missing space after #.
 #put the image into the viewer box
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:33:1: C: Missing space after #.
+viewer/viewer.rb:32:1: C: Missing space after #.
 #stats box controls
 ^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:34:31: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:33:31: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 cycles_label = Gtk::Label.new("Cycles: 0")
                               ^^^^^^^^^^^
-viewer/viewer.rb:38:1: C: Missing space after #.
+viewer/viewer.rb:37:1: C: Missing space after #.
 #tool bar buttons
 ^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:39:47: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:38:47: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 previous_step_button = Gtk::Button.new(label: "<-")
                                               ^^^^
-viewer/viewer.rb:41:41: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:40:41: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 zoom_in_button = Gtk::Button.new(label: "Z+")
                                         ^^^^
-viewer/viewer.rb:43:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:42:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 zoom_out_button = Gtk::Button.new(label: "Z-")
                                          ^^^^
-viewer/viewer.rb:45:49: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:44:49: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 inspect_machine_button = Gtk::Button.new(label: "IM")
                                                 ^^^^
-viewer/viewer.rb:47:48: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:46:48: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 inspect_thread_button = Gtk::Button.new(label: "IT")
                                                ^^^^
-viewer/viewer.rb:49:45: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:48:45: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 run_machine_button = Gtk::Button.new(label: "Run")
                                             ^^^^^
-viewer/viewer.rb:51:47: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:50:47: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 pause_machine_button = Gtk::Button.new(label: "Pause")
                                               ^^^^^^^
-viewer/viewer.rb:53:49: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:52:49: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 restart_machine_button = Gtk::Button.new(label: "Restart")
                                                 ^^^^^^^^^
-viewer/viewer.rb:55:43: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:54:43: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 next_step_button = Gtk::Button.new(label: "->")
                                           ^^^^
-viewer/viewer.rb:57:1: C: Missing space after #.
+viewer/viewer.rb:56:1: C: Missing space after #.
 #put them into the toolbar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:58:81: C: Line is too long. [82/80]
+viewer/viewer.rb:57:81: C: Line is too long. [82/80]
 toolbar_box.pack_start(previous_step_button, expand: true, fill: true, padding: 0)
                                                                                 ^^
-viewer/viewer.rb:61:81: C: Line is too long. [84/80]
+viewer/viewer.rb:60:81: C: Line is too long. [84/80]
 toolbar_box.pack_start(inspect_machine_button, expand: true, fill: true, padding: 0)
                                                                                 ^^^^
-viewer/viewer.rb:62:81: C: Line is too long. [83/80]
+viewer/viewer.rb:61:81: C: Line is too long. [83/80]
 toolbar_box.pack_start(inspect_thread_button, expand: true, fill: true, padding: 0)
                                                                                 ^^^
-viewer/viewer.rb:66:1: C: Missing space after #.
+viewer/viewer.rb:65:1: C: Missing space after #.
 #options for the play pause restart table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:67:37: C: Surrounding space missing for operator |.
+viewer/viewer.rb:66:37: C: Surrounding space missing for operator |.
 options = Gtk::AttachOptions::EXPAND|Gtk::AttachOptions::FILL
                                     ^
-viewer/viewer.rb:68:1: C: Missing space after #.
+viewer/viewer.rb:67:1: C: Missing space after #.
 #put our controls on the table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:70:81: C: Line is too long. [81/80]
+viewer/viewer.rb:69:81: C: Line is too long. [81/80]
 machine_controls.attach(pause_machine_button, 0, 1, 1, 2, options, options, 0, 0)
                                                                                 ^
-viewer/viewer.rb:71:81: C: Line is too long. [83/80]
+viewer/viewer.rb:70:81: C: Line is too long. [83/80]
 machine_controls.attach(restart_machine_button, 1, 2, 1, 2, options, options, 0, 0)
                                                                                 ^^^
-viewer/viewer.rb:73:1: C: Missing space after #.
+viewer/viewer.rb:72:1: C: Missing space after #.
 #put all the boxes into the window
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:78:1: C: Extra blank line detected.
-viewer/viewer.rb:79:1: C: Missing space after #.
+viewer/viewer.rb:77:1: C: Extra blank line detected.
+viewer/viewer.rb:78:1: C: Missing space after #.
 #create and start the machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:82:1: C: Missing space after #.
+viewer/viewer.rb:81:1: C: Missing space after #.
 #attach events to machine methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:88:1: C: Missing space after #.
+viewer/viewer.rb:87:1: C: Missing space after #.
 #create and start the window
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:90:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:89:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
 window.title = "Pixesoteric Viewer"
                ^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:96:38: C: Avoid using {...} for multi-line blocks.
+viewer/viewer.rb:95:38: C: Avoid using {...} for multi-line blocks.
 window.signal_connect(:delete_event) {
                                      ^
-viewer/viewer.rb:97:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:96:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
   puts "delete event occurred"
        ^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:98:3: C: Missing space after #.
+viewer/viewer.rb:97:3: C: Missing space after #.
   #true
   ^^^^^
-viewer/viewer.rb:102:33: C: Avoid using {...} for multi-line blocks.
+viewer/viewer.rb:101:33: C: Avoid using {...} for multi-line blocks.
 window.signal_connect(:destroy) {
                                 ^
-viewer/viewer.rb:103:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+viewer/viewer.rb:102:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
   puts "destroy event occurred"
        ^^^^^^^^^^^^^^^^^^^^^^^^
-viewer/viewer.rb:106:9: C: Final newline missing.
+viewer/viewer.rb:105:9: C: Final newline missing.
 Gtk.main
         
-instructions/basic/comparison.rb:4:1: C: Missing top-level class documentation comment.
-class GreaterThanCV < Instruction
-^^^^^
-instructions/basic/comparison.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/comparison.rb:11:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/comparison.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/comparison.rb:13:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/comparison.rb:24:1: C: Missing top-level class documentation comment.
-class S1GreaterThanS2 < Instruction
-^^^^^
-instructions/basic/comparison.rb:28:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/comparison.rb:34:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/comparison.rb:30:56: C: Avoid comma after the last item of an array.
+instructions/basic/comparison.rb:36:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/comparison.rb:34:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/comparison.rb:40:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/comparison.rb:44:1: C: Missing top-level class documentation comment.
-class S1EqualsS2 < Instruction
-^^^^^
-instructions/basic/comparison.rb:48:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/comparison.rb:57:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/comparison.rb:50:56: C: Avoid comma after the last item of an array.
+instructions/basic/comparison.rb:59:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/comparison.rb:54:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/comparison.rb:63:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/math.rb:4:1: C: Missing top-level class documentation comment.
-class Addition < Instruction
-^^^^^
-instructions/basic/math.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/math.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/math.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/math.rb:11:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/math.rb:14:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/math.rb:15:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/math.rb:20:1: C: Missing top-level class documentation comment.
-class Subtraction < Instruction
-^^^^^
-instructions/basic/math.rb:24:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/math.rb:26:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/math.rb:26:56: C: Avoid comma after the last item of an array.
+instructions/basic/math.rb:28:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/math.rb:30:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/math.rb:32:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/math.rb:36:1: C: Missing top-level class documentation comment.
-class Multiplication < Instruction
-^^^^^
-instructions/basic/math.rb:40:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/math.rb:43:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/math.rb:42:56: C: Avoid comma after the last item of an array.
+instructions/basic/math.rb:45:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/math.rb:46:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/math.rb:49:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/math.rb:52:1: C: Missing top-level class documentation comment.
-class Division < Instruction
-^^^^^
-instructions/basic/math.rb:56:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/math.rb:60:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/math.rb:58:56: C: Avoid comma after the last item of an array.
+instructions/basic/math.rb:62:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/math.rb:62:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/math.rb:66:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/math.rb:68:1: C: Missing top-level class documentation comment.
-class Modulo < Instruction
-^^^^^
-instructions/basic/math.rb:72:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/math.rb:77:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/math.rb:74:56: C: Avoid comma after the last item of an array.
+instructions/basic/math.rb:79:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/math.rb:78:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/math.rb:83:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/math.rb:83:1: C: 1 trailing blank lines detected.
-instructions/basic/input.rb:4:1: C: Missing top-level class documentation comment.
-class GetInputNumber < Instruction
-^^^^^
-instructions/basic/input.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/math.rb:88:1: C: 1 trailing blank lines detected.
+instructions/basic/input.rb:4:81: C: Line is too long. [83/80]
+# Grabs a number from input until it hits a non-printable char or the end of input.
+                                                                                ^^^
+instructions/basic/input.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/input.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/input.rb:11:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/input.rb:14:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/input.rb:15:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/input.rb:20:1: C: Missing top-level class documentation comment.
-class GetInputChar < Instruction
-^^^^^
-instructions/basic/input.rb:24:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/input.rb:26:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/input.rb:26:56: C: Avoid comma after the last item of an array.
+instructions/basic/input.rb:28:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/input.rb:30:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/input.rb:32:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/input.rb:34:4: C: Final newline missing.
+instructions/basic/input.rb:36:4: C: Final newline missing.
 end
    
-instructions/basic/stage.rb:4:1: C: Extra blank line detected.
-instructions/basic/stage.rb:5:1: C: Missing top-level class documentation comment.
-class Stage1 < Instruction
-^^^^^
 instructions/basic/stage.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -825,647 +365,560 @@ instructions/basic/stage.rb:11:56: C: Avoid comma after the last item of an arra
 instructions/basic/stage.rb:17:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/stage.rb:25:1: C: Missing top-level class documentation comment.
-class Stage2 < Instruction
-^^^^^
-instructions/basic/stage.rb:29:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:30:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:31:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:32:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:37:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+instructions/basic/stage.rb:38:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/stage.rb:45:1: C: Missing top-level class documentation comment.
-class Stage1Color < Instruction
-^^^^^
-instructions/basic/stage.rb:49:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:51:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:51:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:53:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:61:1: C: Missing top-level class documentation comment.
-class Stage2Color < Instruction
-^^^^^
-instructions/basic/stage.rb:65:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:68:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:67:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:70:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:77:1: C: Missing top-level class documentation comment.
-class SwapMemStage < Instruction
-^^^^^
-instructions/basic/stage.rb:81:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:85:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:83:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:87:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/stage.rb:87:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/stage.rb:91:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/stage.rb:96:1: C: Missing top-level class documentation comment.
-class SwapStages < Instruction
-^^^^^
-instructions/basic/stage.rb:100:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:105:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:102:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:107:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/stage.rb:106:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/stage.rb:111:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/stage.rb:115:1: C: Missing top-level class documentation comment.
-class ShiftPush < Instruction
-^^^^^
-instructions/basic/stage.rb:119:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:125:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:121:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:127:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:125:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/stage.rb:131:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/stage.rb:132:1: C: Missing top-level class documentation comment.
-class ShiftStageLeft < Instruction
-^^^^^
-instructions/basic/stage.rb:136:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:137:81: C: Line is too long. [88/80]
+# Pushes stage_1 to stage_2 amd pushes CMWL to stage_1, then moves to the left CV times.
+                                                                                ^^^^^^^^
+instructions/basic/stage.rb:142:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:138:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:144:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/stage.rb:145:19: C: Surrounding space missing for operator +.
+instructions/basic/stage.rb:151:19: C: Surrounding space missing for operator +.
       (color_value+1).times { thread.memory_wheel.move_left }
                   ^
-instructions/basic/stage.rb:150:1: C: Missing top-level class documentation comment.
-class ShiftStageRight < Instruction
-^^^^^
-instructions/basic/stage.rb:154:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:156:81: C: Line is too long. [89/80]
+# Pushes stage_1 to stage_2 amd pushes CMWL to stage_1, then moves to the right CV times.
+                                                                                ^^^^^^^^^
+instructions/basic/stage.rb:161:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:156:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:163:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:163:19: C: Surrounding space missing for operator +.
+instructions/basic/stage.rb:170:19: C: Surrounding space missing for operator +.
       (color_value+1).times { thread.memory_wheel.move_right }
                   ^
-instructions/basic/stage.rb:168:1: C: Missing top-level class documentation comment.
-class Stage1Push < Instruction
-^^^^^
-instructions/basic/stage.rb:172:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:180:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:174:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:182:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:180:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+instructions/basic/stage.rb:188:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/stage.rb:188:1: C: Missing top-level class documentation comment.
-class Stage2Push < Instruction
-^^^^^
-instructions/basic/stage.rb:192:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:201:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/stage.rb:194:56: C: Avoid comma after the last item of an array.
+instructions/basic/stage.rb:203:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/stage.rb:200:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+instructions/basic/stage.rb:209:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/stage.rb:207:1: C: 8 trailing blank lines detected.
-instructions/basic/memory.rb:4:1: C: Missing top-level class documentation comment.
-class MemWheelRight < Instruction
-^^^^^
-instructions/basic/memory.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/stage.rb:216:1: C: 8 trailing blank lines detected.
+instructions/basic/memory.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:11:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:20:1: C: Missing top-level class documentation comment.
-class MemWheelLeft < Instruction
-^^^^^
-instructions/basic/memory.rb:24:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:26:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:26:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:28:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:36:1: C: Missing top-level class documentation comment.
-class Decrement < Instruction
-^^^^^
-instructions/basic/memory.rb:40:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:43:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:42:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:45:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:47:81: C: Line is too long. [86/80]
+instructions/basic/memory.rb:50:81: C: Line is too long. [86/80]
       thread.memory_wheel.push(thread.memory_wheel.pull.to_i - (color_value.to_i + 1))
                                                                                 ^^^^^^
-instructions/basic/memory.rb:52:1: C: Missing top-level class documentation comment.
-class Increment < Instruction
-^^^^^
-instructions/basic/memory.rb:56:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:60:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:58:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:62:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:63:81: C: Line is too long. [86/80]
+instructions/basic/memory.rb:67:81: C: Line is too long. [86/80]
       thread.memory_wheel.push(thread.memory_wheel.pull.to_i + (color_value.to_i + 1))
                                                                                 ^^^^^^
-instructions/basic/memory.rb:68:1: C: Missing top-level class documentation comment.
-class Insert < Instruction
-^^^^^
-instructions/basic/memory.rb:72:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:77:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:74:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:79:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:84:1: C: Missing top-level class documentation comment.
-class MovePosition < Instruction
-^^^^^
-instructions/basic/memory.rb:88:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:94:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:90:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:96:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/memory.rb:100:1: C: Missing top-level class documentation comment.
-class InsertPosition < Instruction
-^^^^^
-instructions/basic/memory.rb:104:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:111:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:106:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:113:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:116:1: C: Missing top-level class documentation comment.
-class GetPosition < Instruction
-^^^^^
-instructions/basic/memory.rb:120:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:128:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:122:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:130:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:132:1: C: Missing top-level class documentation comment.
-class InsertStatic < Instruction
-^^^^^
-instructions/basic/memory.rb:136:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:145:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:138:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:147:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:148:1: C: Missing top-level class documentation comment.
-class GetStatic < Instruction
-^^^^^
-instructions/basic/memory.rb:152:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:162:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/memory.rb:154:56: C: Avoid comma after the last item of an array.
+instructions/basic/memory.rb:164:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/memory.rb:163:1: C: 2 trailing blank lines detected.
-instructions/basic/thread_control.rb:4:1: C: Missing top-level class documentation comment.
-class StartThreadRight < Instruction
-^^^^^
-instructions/basic/thread_control.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/memory.rb:172:4: C: Final newline missing.
+end
+   
+instructions/basic/thread_control.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:11:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:18:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:19:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:24:1: C: Extra blank line detected.
-instructions/basic/thread_control.rb:25:1: C: Missing top-level class documentation comment.
-class StartThreadLeft < Instruction
-^^^^^
-instructions/basic/thread_control.rb:29:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:30:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:31:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:32:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:39:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:40:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:45:1: C: Missing top-level class documentation comment.
-class StartThreadUp < Instruction
-^^^^^
-instructions/basic/thread_control.rb:49:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:51:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:51:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:53:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:59:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:61:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:65:1: C: Extra blank line detected.
-instructions/basic/thread_control.rb:66:1: C: Missing top-level class documentation comment.
-class StartThreadDown < Instruction
-^^^^^
-instructions/basic/thread_control.rb:70:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:72:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:72:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:74:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:80:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:82:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:86:1: C: Missing top-level class documentation comment.
-class EndThread < Instruction
-^^^^^
-instructions/basic/thread_control.rb:90:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:93:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:92:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:95:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:96:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:99:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:102:1: C: Extra blank line detected.
-instructions/basic/thread_control.rb:103:1: C: Missing top-level class documentation comment.
-class PauseThread < Instruction
-^^^^^
-instructions/basic/thread_control.rb:107:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:110:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:109:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:112:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/thread_control.rb:119:1: C: Missing top-level class documentation comment.
-class ForkPipeURD < Instruction
-^^^^^
-instructions/basic/thread_control.rb:123:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:122:81: C: Line is too long. [115/80]
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:123:81: C: Line is too long. [98/80]
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
+                                                                                ^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:128:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:125:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:130:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/thread_control.rb:129:5: C: Method has too many lines. [11/10]
+instructions/basic/thread_control.rb:134:5: C: Method has too many lines. [13/10]
     def run(thread, color_value)
     ^^^
-instructions/basic/thread_control.rb:129:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:134:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:131:9: C: Indent when as deep as case.
-        when :up
-        ^^^^
-instructions/basic/thread_control.rb:133:9: C: Indent when as deep as case.
-        when :left
-        ^^^^
 instructions/basic/thread_control.rb:136:9: C: Indent when as deep as case.
-        when :down
+        when :up
         ^^^^
 instructions/basic/thread_control.rb:138:9: C: Indent when as deep as case.
-        when :right
-        ^^^^
-instructions/basic/thread_control.rb:145:1: C: Missing top-level class documentation comment.
-class ForkPipeLRD < Instruction
-^^^^^
-instructions/basic/thread_control.rb:149:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:151:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
-                                                       ^
-instructions/basic/thread_control.rb:155:5: C: Method has too many lines. [11/10]
-    def run(thread, color_value)
-    ^^^
-instructions/basic/thread_control.rb:155:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/thread_control.rb:157:9: C: Indent when as deep as case.
-        when :up
-        ^^^^
-instructions/basic/thread_control.rb:160:9: C: Indent when as deep as case.
         when :left
         ^^^^
-instructions/basic/thread_control.rb:162:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:141:9: C: Indent when as deep as case.
         when :down
         ^^^^
-instructions/basic/thread_control.rb:164:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:143:9: C: Indent when as deep as case.
         when :right
         ^^^^
-instructions/basic/thread_control.rb:171:1: C: Missing top-level class documentation comment.
-class ForkPipeULD < Instruction
-^^^^^
-instructions/basic/thread_control.rb:175:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+instructions/basic/thread_control.rb:146:11: C: Provide an exception class and message as arguments to raise.
+          raise Exception.new
+          ^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:146:11: C: Use fail instead of raise to signal exceptions.
+          raise Exception.new
+          ^^^^^
+instructions/basic/thread_control.rb:152:81: C: Line is too long. [115/80]
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:153:81: C: Line is too long. [98/80]
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
+                                                                                ^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:158:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:177:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:160:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/thread_control.rb:181:5: C: Method has too many lines. [11/10]
+instructions/basic/thread_control.rb:164:5: C: Method has too many lines. [13/10]
     def run(thread, color_value)
     ^^^
-instructions/basic/thread_control.rb:181:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:164:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:183:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:166:9: C: Indent when as deep as case.
         when :up
         ^^^^
-instructions/basic/thread_control.rb:185:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:169:9: C: Indent when as deep as case.
         when :left
         ^^^^
-instructions/basic/thread_control.rb:187:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:171:9: C: Indent when as deep as case.
         when :down
         ^^^^
-instructions/basic/thread_control.rb:189:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:173:9: C: Indent when as deep as case.
         when :right
         ^^^^
-instructions/basic/thread_control.rb:197:1: C: Missing top-level class documentation comment.
-class ForkPipeULR < Instruction
-^^^^^
-instructions/basic/thread_control.rb:201:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:176:11: C: Provide an exception class and message as arguments to raise.
+          raise Exception.new
+          ^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:176:11: C: Use fail instead of raise to signal exceptions.
+          raise Exception.new
+          ^^^^^
+instructions/basic/thread_control.rb:182:81: C: Line is too long. [115/80]
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:183:81: C: Line is too long. [98/80]
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
+                                                                                ^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:188:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:203:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+instructions/basic/thread_control.rb:190:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/thread_control.rb:207:5: C: Method has too many lines. [11/10]
+instructions/basic/thread_control.rb:194:5: C: Method has too many lines. [13/10]
     def run(thread, color_value)
     ^^^
-instructions/basic/thread_control.rb:207:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:194:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/thread_control.rb:209:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:196:9: C: Indent when as deep as case.
         when :up
         ^^^^
-instructions/basic/thread_control.rb:211:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:198:9: C: Indent when as deep as case.
         when :left
         ^^^^
-instructions/basic/thread_control.rb:213:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:200:9: C: Indent when as deep as case.
         when :down
         ^^^^
-instructions/basic/thread_control.rb:216:9: C: Indent when as deep as case.
+instructions/basic/thread_control.rb:202:9: C: Indent when as deep as case.
         when :right
         ^^^^
-instructions/basic/thread_control.rb:223:1: C: Missing top-level class documentation comment.
-class Jump < Instruction
-^^^^^
-instructions/basic/thread_control.rb:227:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+instructions/basic/thread_control.rb:206:11: C: Provide an exception class and message as arguments to raise.
+          raise Exception.new
+          ^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:206:11: C: Use fail instead of raise to signal exceptions.
+          raise Exception.new
+          ^^^^^
+instructions/basic/thread_control.rb:212:81: C: Line is too long. [115/80]
+# Forks a thread and changes it's direction based on the direction it came in and forks the thread a new direction.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:213:81: C: Line is too long. [98/80]
+# Just look at the symbol, you'll figure it out, the non-pipe side reverses the threads direction.
+                                                                                ^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:218:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:229:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:220:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/thread_control.rb:239:1: C: Missing top-level class documentation comment.
-class Call < Instruction
-^^^^^
-instructions/basic/thread_control.rb:243:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:224:5: C: Method has too many lines. [13/10]
+    def run(thread, color_value)
+    ^^^
+instructions/basic/thread_control.rb:224:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/thread_control.rb:226:9: C: Indent when as deep as case.
+        when :up
+        ^^^^
+instructions/basic/thread_control.rb:228:9: C: Indent when as deep as case.
+        when :left
+        ^^^^
+instructions/basic/thread_control.rb:230:9: C: Indent when as deep as case.
+        when :down
+        ^^^^
+instructions/basic/thread_control.rb:233:9: C: Indent when as deep as case.
+        when :right
+        ^^^^
+instructions/basic/thread_control.rb:236:11: C: Provide an exception class and message as arguments to raise.
+          raise Exception.new
+          ^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:236:11: C: Use fail instead of raise to signal exceptions.
+          raise Exception.new
+          ^^^^^
+instructions/basic/thread_control.rb:247:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/thread_control.rb:249:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+                                                       ^
+instructions/basic/thread_control.rb:265:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:245:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:267:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:257:1: C: Missing top-level class documentation comment.
-class Refresh < Instruction
-^^^^^
-instructions/basic/thread_control.rb:261:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/thread_control.rb:284:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/thread_control.rb:263:56: C: Avoid comma after the last item of an array.
+instructions/basic/thread_control.rb:286:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/thread_control.rb:267:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/thread_control.rb:290:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/output.rb:4:1: C: Missing top-level class documentation comment.
-class OutputMemChar < Instruction
-^^^^^
-instructions/basic/output.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:4:1: C: Missing space after #.
+#Outputs the CMWL as a char using r + g + b
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/output.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:11:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/output.rb:14:5: C: Assignment Branch Condition size for run is too high. [15.84/15]
+instructions/basic/output.rb:15:5: C: Assignment Branch Condition size for run is too high. [15.84/15]
     def run(thread, color_value)
     ^^^
-instructions/basic/output.rb:17:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+instructions/basic/output.rb:18:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/output.rb:26:1: C: Missing top-level class documentation comment.
-class OutputMemInt < Instruction
-^^^^^
-instructions/basic/output.rb:30:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:27:1: C: Missing space after #.
+#Outputs the CMWL as a number. CV masks the value.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/output.rb:32:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:32:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:34:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/output.rb:39:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+instructions/basic/output.rb:41:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/output.rb:48:1: C: Missing top-level class documentation comment.
-class OutputMemHex < Instruction
-^^^^^
-instructions/basic/output.rb:52:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:55:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:54:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:57:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/output.rb:61:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+instructions/basic/output.rb:64:7: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
       if color_value.to_i != 0x000000
       ^^
-instructions/basic/output.rb:70:1: C: Missing top-level class documentation comment.
-class OutputColorChar < Instruction
-^^^^^
-instructions/basic/output.rb:74:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:78:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:76:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:80:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/output.rb:82:81: C: Line is too long. [86/80]
+instructions/basic/output.rb:86:81: C: Line is too long. [86/80]
       char = (((mem & 0xff0000) >> 16) + ((mem & 0xff00) >> 8) + (mem & 0xff)) % 0x100
                                                                                 ^^^^^^
-instructions/basic/output.rb:88:1: C: Missing top-level class documentation comment.
-class OutputColorNumber < Instruction
-^^^^^
-instructions/basic/output.rb:92:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:97:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:94:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:99:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::BLACK],
                                                        ^
-instructions/basic/output.rb:104:1: C: Extra blank line detected.
-instructions/basic/output.rb:105:1: C: Missing top-level class documentation comment.
-class OutputColorHex < Instruction
-^^^^^
-instructions/basic/output.rb:109:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:114:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:111:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:116:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/output.rb:121:1: C: Missing top-level class documentation comment.
-class InputAndOutputNumber < Instruction
-^^^^^
-instructions/basic/output.rb:125:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:131:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:127:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:133:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/output.rb:138:1: C: Missing top-level class documentation comment.
-class InputAndOutputChar < Instruction
-^^^^^
-instructions/basic/output.rb:142:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/output.rb:149:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/output.rb:144:56: C: Avoid comma after the last item of an array.
+instructions/basic/output.rb:151:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/output.rb:154:1: C: 2 trailing blank lines detected.
-instructions/basic/directions.rb:3:1: C: Missing top-level class documentation comment.
-class DirectionUp < Instruction
-^^^^^
-instructions/basic/directions.rb:7:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/directions.rb:9:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-                                                       ^
-instructions/basic/directions.rb:13:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/directions.rb:19:1: C: Missing top-level class documentation comment.
-class DirectionDown < Instruction
-^^^^^
-instructions/basic/directions.rb:23:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/directions.rb:25:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
-                                                       ^
-instructions/basic/directions.rb:29:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/directions.rb:35:1: C: Missing top-level class documentation comment.
-class DirectionLeft < Instruction
-^^^^^
-instructions/basic/directions.rb:39:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/directions.rb:41:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-                                                       ^
-instructions/basic/directions.rb:45:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/directions.rb:51:1: C: Missing top-level class documentation comment.
-class DirectionRight < Instruction
-^^^^^
-instructions/basic/directions.rb:55:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/directions.rb:57:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
-                                                       ^
-instructions/basic/directions.rb:61:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/directions.rb:65:4: C: Final newline missing.
+instructions/basic/output.rb:160:4: C: Final newline missing.
 end
    
-instructions/basic/boolean.rb:4:1: C: Missing top-level class documentation comment.
-class LogicalNot < Instruction
-^^^^^
-instructions/basic/boolean.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+instructions/basic/directions.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/boolean.rb:10:56: C: Avoid comma after the last item of an array.
+instructions/basic/directions.rb:11:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/boolean.rb:14:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/directions.rb:15:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/boolean.rb:24:1: C: Missing top-level class documentation comment.
-class LogicalAnd < Instruction
-^^^^^
-instructions/basic/boolean.rb:28:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/boolean.rb:30:56: C: Avoid comma after the last item of an array.
-          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
-                                                       ^
-instructions/basic/boolean.rb:34:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/boolean.rb:44:1: C: Missing top-level class documentation comment.
-class LogicalOr < Instruction
-^^^^^
-instructions/basic/boolean.rb:48:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/boolean.rb:50:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
-                                                       ^
-instructions/basic/boolean.rb:54:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
-    def run(thread, color_value)
-                    ^^^^^^^^^^^
-instructions/basic/boolean.rb:64:1: C: Missing top-level class documentation comment.
-class LogicalXor < Instruction
-^^^^^
-instructions/basic/boolean.rb:68:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/directions.rb:26:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/boolean.rb:70:56: C: Avoid comma after the last item of an array.
-          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+instructions/basic/directions.rb:28:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
                                                        ^
-instructions/basic/boolean.rb:74:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+instructions/basic/directions.rb:32:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
     def run(thread, color_value)
                     ^^^^^^^^^^^
-instructions/basic/boolean.rb:82:4: C: Final newline missing.
+instructions/basic/directions.rb:43:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/directions.rb:45:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+                                                       ^
+instructions/basic/directions.rb:49:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/directions.rb:60:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/directions.rb:62:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+                                                       ^
+instructions/basic/directions.rb:66:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/directions.rb:70:4: C: Final newline missing.
 end
    
-instructions/basic/conditionals.rb:4:1: C: Missing top-level class documentation comment.
-class VerticalIf < Instruction
-^^^^^
-instructions/basic/conditionals.rb:8:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+instructions/basic/boolean.rb:9:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/conditionals.rb:10:56: C: Avoid comma after the last item of an array.
-          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+instructions/basic/boolean.rb:11:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/conditionals.rb:24:1: C: Missing top-level class documentation comment.
-class HorizontalIf < Instruction
-^^^^^
-instructions/basic/conditionals.rb:28:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/boolean.rb:15:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/boolean.rb:30:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/boolean.rb:32:56: C: Avoid comma after the last item of an array.
+          [Colors::BLACK, Colors::BLACK, Colors::WHITE],
+                                                       ^
+instructions/basic/boolean.rb:36:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/boolean.rb:37:81: C: Line is too long. [91/80]
+      if (stage_1 != Instruction::LOGICAL_FALSE) && (stage_2 != Instruction::LOGICAL_FALSE)
+                                                                                ^^^^^^^^^^^
+instructions/basic/boolean.rb:51:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/boolean.rb:53:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::BLACK, Colors::BLACK],
+                                                       ^
+instructions/basic/boolean.rb:57:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/boolean.rb:58:81: C: Line is too long. [91/80]
+      if (stage_1 != Instruction::LOGICAL_FALSE) || (stage_2 != Instruction::LOGICAL_FALSE)
+                                                                                ^^^^^^^^^^^
+instructions/basic/boolean.rb:72:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/conditionals.rb:30:56: C: Avoid comma after the last item of an array.
+instructions/basic/boolean.rb:74:56: C: Avoid comma after the last item of an array.
           [Colors::BLACK, Colors::BLACK, Colors::BLACK],
                                                        ^
-instructions/basic/basic.rb:15:1: C: Missing top-level class documentation comment.
-class Blank < Instruction
-^^^^^
-instructions/basic/basic.rb:19:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+instructions/basic/boolean.rb:78:21: W: Unused method argument - color_value. If it's necessary, use _ or _color_value as an argument name to indicate that it won't be used.
+    def run(thread, color_value)
+                    ^^^^^^^^^^^
+instructions/basic/boolean.rb:79:81: C: Line is too long. [90/80]
+      if (stage_1 != Instruction::LOGICAL_FALSE) ^ (stage_2 != Instruction::LOGICAL_FALSE)
+                                                                                ^^^^^^^^^^
+instructions/basic/boolean.rb:86:4: C: Final newline missing.
+end
+   
+instructions/basic/conditionals.rb:11:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/conditionals.rb:13:56: C: Avoid comma after the last item of an array.
+          [Colors::WHITE, Colors::BLACK, Colors::WHITE],
+                                                       ^
+instructions/basic/conditionals.rb:34:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-instructions/basic/basic.rb:21:56: C: Avoid comma after the last item of an array.
+instructions/basic/conditionals.rb:36:56: C: Avoid comma after the last item of an array.
+          [Colors::BLACK, Colors::BLACK, Colors::BLACK],
+                                                       ^
+instructions/basic/basic.rb:20:11: C: Use 2 spaces for indentation in an array, relative to the start of the line where the left bracket is.
+          [Colors::WHITE, Colors::WHITE, Colors::WHITE],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+instructions/basic/basic.rb:22:56: C: Avoid comma after the last item of an array.
           [Colors::WHITE, Colors::WHITE, Colors::WHITE],
                                                        ^
-instructions/basic/basic.rb:25:4: C: Final newline missing.
+instructions/basic/basic.rb:26:4: C: Final newline missing.
 end
    
 spec/machine_spec.rb:4:1: C: Extra blank line detected.
@@ -1572,22 +1025,13 @@ spec/machine_spec.rb:181:42: C: Prefer single-quoted strings when you don't need
 spec/machine_spec.rb:187:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
     expect(project_euler_4.output).to eq "9009"
                                          ^^^^^^
-spec/machine_spec.rb:190:3: C: Missing space after #.
-  #takes a really long time, a potential of billions of cycles.
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-spec/machine_spec.rb:191:3: C: Missing space after #.
-  #Sad part is it does get the right answer quickly, but it has to keep searching in case it finds one bigger.
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-spec/machine_spec.rb:191:81: C: Line is too long. [110/80]
-  #Sad part is it does get the right answer quickly, but it has to keep searching in case it finds one bigger.
-                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-spec/machine_spec.rb:195:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+spec/machine_spec.rb:194:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
     expect(project_euler_4.output).to eq "906609"
                                          ^^^^^^^^
-spec/machine_spec.rb:201:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+spec/machine_spec.rb:200:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
     expect(project_euler_5.output).to eq "2520"
                                          ^^^^^^
-spec/machine_spec.rb:204:1: C: 1 trailing blank lines detected.
+spec/machine_spec.rb:203:1: C: 1 trailing blank lines detected.
 spec/instructions_spec.rb:4:1: C: Extra blank line detected.
 spec/instructions_spec.rb:9:81: C: Line is too long. [81/80]
     expect(a_to_z.instructions.start_points.first.p.class).to eq StartThreadRight
@@ -1603,4 +1047,4 @@ spec/instructions_spec.rb:29:4: C: Final newline missing.
 end
    
 
-22 files inspected, 557 offenses detected
+22 files inspected, 361 offenses detected
